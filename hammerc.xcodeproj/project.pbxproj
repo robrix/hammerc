@@ -1,0 +1,927 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DD76F9F0486AA7600D96B5E /* hammerc.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859EA3029092ED04C91782 /* hammerc.1 */; };
+		D4551E3C113F5FB10086F21C /* HammerCompiledAlternationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E31113F5FB10086F21C /* HammerCompiledAlternationRuleTests.m */; };
+		D4551E3D113F5FB10086F21C /* HammerCompiledCharacterRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E32113F5FB10086F21C /* HammerCompiledCharacterRuleTests.m */; };
+		D4551E3E113F5FB10086F21C /* HammerCompiledCharacterSetRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E33113F5FB10086F21C /* HammerCompiledCharacterSetRuleTests.m */; };
+		D4551E3F113F5FB10086F21C /* HammerCompiledConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E34113F5FB10086F21C /* HammerCompiledConcatenationRuleTests.m */; };
+		D4551E40113F5FB10086F21C /* HammerCompiledLiteralConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E35113F5FB10086F21C /* HammerCompiledLiteralConcatenationRuleTests.m */; };
+		D4551E41113F5FB10086F21C /* HammerCompiledLiteralRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E36113F5FB10086F21C /* HammerCompiledLiteralRuleTests.m */; };
+		D4551E42113F5FB10086F21C /* HammerCompiledLookaheadRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E37113F5FB10086F21C /* HammerCompiledLookaheadRuleTests.m */; };
+		D4551E43113F5FB10086F21C /* HammerCompiledNamedRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E38113F5FB10086F21C /* HammerCompiledNamedRuleTests.m */; };
+		D4551E44113F5FB10086F21C /* HammerCompiledReferenceRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E39113F5FB10086F21C /* HammerCompiledReferenceRuleTests.m */; };
+		D4551E45113F5FB10086F21C /* HammerCompiledRepetitionRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E3A113F5FB10086F21C /* HammerCompiledRepetitionRuleTests.m */; };
+		D4551E46113F5FB10086F21C /* HammerRuleCompilerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E3B113F5FB10086F21C /* HammerRuleCompilerTests.m */; };
+		D4551E4C113F5FC80086F21C /* HammerCompiledRule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E49113F5FC80086F21C /* HammerCompiledRule.m */; };
+		D4551E4D113F5FC80086F21C /* HammerRuleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */; };
+		D4551E4E113F5FC80086F21C /* HammerCompiledRule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E49113F5FC80086F21C /* HammerCompiledRule.m */; };
+		D4551E4F113F5FC80086F21C /* HammerRuleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */; };
+		D4551E54113F5FEF0086F21C /* hammerc.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E51113F5FEF0086F21C /* hammerc.m */; };
+		D4551E82113F85830086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
+		D4551E85113F858B0086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
+		D4551E9A113F85CA0086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
+		D4551E9B113F85CC0086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
+		D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EBA113F88300086F21C /* bootstrap-hammerc.m */; };
+		D4551EBE113F88450086F21C /* HammerCompiledRule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E49113F5FC80086F21C /* HammerCompiledRule.m */; };
+		D4551EBF113F88450086F21C /* HammerRuleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */; };
+		D4551EE3113F88700086F21C /* digit.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EC3113F88700086F21C /* digit.grammar */; };
+		D4551EE4113F88700086F21C /* letter.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EC4113F88700086F21C /* letter.grammar */; };
+		D4551EE5113F88700086F21C /* HammerAlternationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EC6113F88700086F21C /* HammerAlternationRuleTests.m */; };
+		D4551EE6113F88700086F21C /* HammerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EC7113F88700086F21C /* HammerBuilderTests.m */; };
+		D4551EE7113F88700086F21C /* HammerCharacterRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EC9113F88700086F21C /* HammerCharacterRuleTests.m */; };
+		D4551EE8113F88700086F21C /* HammerCharacterSetRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */; };
+		D4551EE9113F88700086F21C /* HammerConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */; };
+		D4551EEA113F88700086F21C /* HammerContainerRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */; };
+		D4551EEB113F88700086F21C /* HammerLiteralConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */; };
+		D4551EEC113F88700086F21C /* HammerLiteralRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED2113F88700086F21C /* HammerLiteralRuleTests.m */; };
+		D4551EED113F88700086F21C /* HammerLookaheadRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */; };
+		D4551EEE113F88700086F21C /* HammerNamedRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */; };
+		D4551EEF113F88700086F21C /* HammerParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED7113F88700086F21C /* HammerParserTests.m */; };
+		D4551EF0113F88700086F21C /* HammerReferenceRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */; };
+		D4551EF1113F88700086F21C /* HammerRepetitionRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDB113F88700086F21C /* HammerRepetitionRuleTests.m */; };
+		D4551EF2113F88700086F21C /* HammerRulePrinterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */; };
+		D4551EF3113F88700086F21C /* HammerRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDE113F88700086F21C /* HammerRuleTests.m */; };
+		D4551EF4113F88700086F21C /* HammerTestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EE0113F88700086F21C /* HammerTestParser.m */; };
+		D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */; };
+		D4551EF8113F88A00086F21C /* Hammer.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EF7113F88A00086F21C /* Hammer.grammar */; };
+		D4551EFB113F88B80086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
+		D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
+		D4551F0B113F8E270086F21C /* RXAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551F0A113F8E270086F21C /* RXAssertions.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4551DFE113E48B20086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4551DF9113E48A90086F21C /* bootstrap-hammerc */;
+			remoteInfo = "bootstrap-hammerc";
+		};
+		D4551E7A113F85780086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4041AB1113BB80D005F156E /* libHammer.a */;
+			remoteInfo = "Hammer (Static Library)";
+		};
+		D4551E7C113F85780086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* Hammer.framework */;
+			remoteInfo = Hammer;
+		};
+		D4551E7E113F85780086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4DB11D60D138C7400C730A3 /* Tests.octest */;
+			remoteInfo = Tests;
+		};
+		D4551E80113F85780086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D404EB4610F5791C007612E9 /* Measure Performance */;
+			remoteInfo = "Measure Performance";
+		};
+		D4551E94113F85C20086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libAuspicion.a */;
+			remoteInfo = "Auspicion (Static Library)";
+		};
+		D4551E96113F85C20086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D407954F10EB27140061CF6C /* Auspicion.framework */;
+			remoteInfo = "Auspicion (Framework)";
+		};
+		D4551E98113F85C20086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90 /* libAuspicionLLVM.a */;
+			remoteInfo = AuspicionLLVM;
+		};
+		D4551E9C113F85D70086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D4041AB0113BB80D005F156E /* Hammer (Static Library) */;
+			remoteInfo = "Hammer (Static Library)";
+		};
+		D4551E9E113F85DA0086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteInfo = "Auspicion (Static Library)";
+		};
+		D4551EFD113F88CA0086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteInfo = "Auspicion (Static Library)";
+		};
+		D4551EFF113F88CA0086F21C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D4041AB0113BB80D005F156E /* Hammer (Static Library) */;
+			remoteInfo = "Hammer (Static Library)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F9F0486AA7600D96B5E /* hammerc.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8DD76FA10486AA7600D96B5E /* hammerc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hammerc; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859EA3029092ED04C91782 /* hammerc.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = hammerc.1; sourceTree = "<group>"; };
+		D4551DFA113E48A90086F21C /* bootstrap-hammerc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "bootstrap-hammerc"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4551E28113F5F6D0086F21C /* Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4551E29113F5F6D0086F21C /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
+		D4551E31113F5FB10086F21C /* HammerCompiledAlternationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledAlternationRuleTests.m; sourceTree = "<group>"; };
+		D4551E32113F5FB10086F21C /* HammerCompiledCharacterRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledCharacterRuleTests.m; sourceTree = "<group>"; };
+		D4551E33113F5FB10086F21C /* HammerCompiledCharacterSetRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledCharacterSetRuleTests.m; sourceTree = "<group>"; };
+		D4551E34113F5FB10086F21C /* HammerCompiledConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledConcatenationRuleTests.m; sourceTree = "<group>"; };
+		D4551E35113F5FB10086F21C /* HammerCompiledLiteralConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledLiteralConcatenationRuleTests.m; sourceTree = "<group>"; };
+		D4551E36113F5FB10086F21C /* HammerCompiledLiteralRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledLiteralRuleTests.m; sourceTree = "<group>"; };
+		D4551E37113F5FB10086F21C /* HammerCompiledLookaheadRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledLookaheadRuleTests.m; sourceTree = "<group>"; };
+		D4551E38113F5FB10086F21C /* HammerCompiledNamedRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledNamedRuleTests.m; sourceTree = "<group>"; };
+		D4551E39113F5FB10086F21C /* HammerCompiledReferenceRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledReferenceRuleTests.m; sourceTree = "<group>"; };
+		D4551E3A113F5FB10086F21C /* HammerCompiledRepetitionRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledRepetitionRuleTests.m; sourceTree = "<group>"; };
+		D4551E3B113F5FB10086F21C /* HammerRuleCompilerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleCompilerTests.m; sourceTree = "<group>"; };
+		D4551E48113F5FC80086F21C /* HammerCompiledRule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerCompiledRule.h; sourceTree = "<group>"; };
+		D4551E49113F5FC80086F21C /* HammerCompiledRule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCompiledRule.m; sourceTree = "<group>"; };
+		D4551E4A113F5FC80086F21C /* HammerRuleCompiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRuleCompiler.h; sourceTree = "<group>"; };
+		D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleCompiler.m; sourceTree = "<group>"; };
+		D4551E51113F5FEF0086F21C /* hammerc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hammerc.m; sourceTree = "<group>"; };
+		D4551E52113F5FEF0086F21C /* hammerc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hammerc_Prefix.pch; sourceTree = "<group>"; };
+		D4551E6E113F85780086F21C /* Hammer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Hammer.xcodeproj; sourceTree = "<group>"; };
+		D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Auspicion.xcodeproj; sourceTree = "<group>"; };
+		D4551EBA113F88300086F21C /* bootstrap-hammerc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "bootstrap-hammerc.m"; sourceTree = "<group>"; };
+		D4551EC3113F88700086F21C /* digit.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digit.grammar; sourceTree = "<group>"; };
+		D4551EC4113F88700086F21C /* letter.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = letter.grammar; sourceTree = "<group>"; };
+		D4551EC5113F88700086F21C /* HammerAlternationRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerAlternationRuleTests.h; sourceTree = "<group>"; };
+		D4551EC6113F88700086F21C /* HammerAlternationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerAlternationRuleTests.m; sourceTree = "<group>"; };
+		D4551EC7113F88700086F21C /* HammerBuilderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerBuilderTests.m; sourceTree = "<group>"; };
+		D4551EC8113F88700086F21C /* HammerCharacterRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerCharacterRuleTests.h; sourceTree = "<group>"; };
+		D4551EC9113F88700086F21C /* HammerCharacterRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCharacterRuleTests.m; sourceTree = "<group>"; };
+		D4551ECA113F88700086F21C /* HammerCharacterSetRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerCharacterSetRuleTests.h; sourceTree = "<group>"; };
+		D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCharacterSetRuleTests.m; sourceTree = "<group>"; };
+		D4551ECC113F88700086F21C /* HammerConcatenationRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerConcatenationRuleTests.h; sourceTree = "<group>"; };
+		D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerConcatenationRuleTests.m; sourceTree = "<group>"; };
+		D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerContainerRuleTests.m; sourceTree = "<group>"; };
+		D4551ECF113F88700086F21C /* HammerLiteralConcatenationRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerLiteralConcatenationRuleTests.h; sourceTree = "<group>"; };
+		D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerLiteralConcatenationRuleTests.m; sourceTree = "<group>"; };
+		D4551ED1113F88700086F21C /* HammerLiteralRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerLiteralRuleTests.h; sourceTree = "<group>"; };
+		D4551ED2113F88700086F21C /* HammerLiteralRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerLiteralRuleTests.m; sourceTree = "<group>"; };
+		D4551ED3113F88700086F21C /* HammerLookaheadRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerLookaheadRuleTests.h; sourceTree = "<group>"; };
+		D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerLookaheadRuleTests.m; sourceTree = "<group>"; };
+		D4551ED5113F88700086F21C /* HammerNamedRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerNamedRuleTests.h; sourceTree = "<group>"; };
+		D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerNamedRuleTests.m; sourceTree = "<group>"; };
+		D4551ED7113F88700086F21C /* HammerParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerParserTests.m; sourceTree = "<group>"; };
+		D4551ED8113F88700086F21C /* HammerReferenceRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerReferenceRuleTests.h; sourceTree = "<group>"; };
+		D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerReferenceRuleTests.m; sourceTree = "<group>"; };
+		D4551EDA113F88700086F21C /* HammerRepetitionRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRepetitionRuleTests.h; sourceTree = "<group>"; };
+		D4551EDB113F88700086F21C /* HammerRepetitionRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRepetitionRuleTests.m; sourceTree = "<group>"; };
+		D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRulePrinterTests.m; sourceTree = "<group>"; };
+		D4551EDD113F88700086F21C /* HammerRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRuleTests.h; sourceTree = "<group>"; };
+		D4551EDE113F88700086F21C /* HammerRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleTests.m; sourceTree = "<group>"; };
+		D4551EDF113F88700086F21C /* HammerTestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestParser.h; sourceTree = "<group>"; };
+		D4551EE0113F88700086F21C /* HammerTestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestParser.m; sourceTree = "<group>"; };
+		D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestRuleVisitor.h; sourceTree = "<group>"; };
+		D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestRuleVisitor.m; sourceTree = "<group>"; };
+		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hammer.grammar; sourceTree = "<group>"; };
+		D4551F09113F8E270086F21C /* RXAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAssertions.h; sourceTree = "<group>"; };
+		D4551F0A113F8E270086F21C /* RXAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAssertions.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551E9A113F85CA0086F21C /* libAuspicion.a in Frameworks */,
+				D4551E82113F85830086F21C /* libHammer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4551DF8113E48A90086F21C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551E9B113F85CC0086F21C /* libAuspicion.a in Frameworks */,
+				D4551E85113F858B0086F21C /* libHammer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4551E25113F5F6D0086F21C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551EFB113F88B80086F21C /* libAuspicion.a in Frameworks */,
+				D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* hammerc */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Classes */,
+				D4551E50113F5FEF0086F21C /* Other Sources */,
+				D4551E30113F5FB10086F21C /* Tests */,
+				C6859EA2029092E104C91782 /* Documentation */,
+				D4551E6B113F85410086F21C /* External */,
+				D4551E2F113F5F7D0086F21C /* Resources */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = hammerc;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E48113F5FC80086F21C /* HammerCompiledRule.h */,
+				D4551E49113F5FC80086F21C /* HammerCompiledRule.m */,
+				D4551E4A113F5FC80086F21C /* HammerRuleCompiler.h */,
+				D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76FA10486AA7600D96B5E /* hammerc */,
+				D4551DFA113E48A90086F21C /* bootstrap-hammerc */,
+				D4551E28113F5F6D0086F21C /* Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859EA2029092E104C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859EA3029092ED04C91782 /* hammerc.1 */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		D4551E2F113F5F7D0086F21C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E29113F5F6D0086F21C /* Tests-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D4551E30113F5FB10086F21C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E31113F5FB10086F21C /* HammerCompiledAlternationRuleTests.m */,
+				D4551E32113F5FB10086F21C /* HammerCompiledCharacterRuleTests.m */,
+				D4551E33113F5FB10086F21C /* HammerCompiledCharacterSetRuleTests.m */,
+				D4551E34113F5FB10086F21C /* HammerCompiledConcatenationRuleTests.m */,
+				D4551E35113F5FB10086F21C /* HammerCompiledLiteralConcatenationRuleTests.m */,
+				D4551E36113F5FB10086F21C /* HammerCompiledLiteralRuleTests.m */,
+				D4551E37113F5FB10086F21C /* HammerCompiledLookaheadRuleTests.m */,
+				D4551E38113F5FB10086F21C /* HammerCompiledNamedRuleTests.m */,
+				D4551E39113F5FB10086F21C /* HammerCompiledReferenceRuleTests.m */,
+				D4551E3A113F5FB10086F21C /* HammerCompiledRepetitionRuleTests.m */,
+				D4551E3B113F5FB10086F21C /* HammerRuleCompilerTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D4551E50113F5FEF0086F21C /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D4551EBA113F88300086F21C /* bootstrap-hammerc.m */,
+				D4551E51113F5FEF0086F21C /* hammerc.m */,
+				D4551E52113F5FEF0086F21C /* hammerc_Prefix.pch */,
+			);
+			path = "Other Sources";
+			sourceTree = "<group>";
+		};
+		D4551E6B113F85410086F21C /* External */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E6D113F855E0086F21C /* Auspicion */,
+				D4551E6C113F85530086F21C /* Hammer */,
+				D4551F08113F8E0A0086F21C /* RXAssertions */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		D4551E6C113F85530086F21C /* Hammer */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E6E113F85780086F21C /* Hammer.xcodeproj */,
+				D4551EF6113F88930086F21C /* Resources */,
+				D4551EC1113F88700086F21C /* Tests */,
+			);
+			path = Hammer;
+			sourceTree = "<group>";
+		};
+		D4551E6D113F855E0086F21C /* Auspicion */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */,
+			);
+			path = Auspicion;
+			sourceTree = "<group>";
+		};
+		D4551E6F113F85780086F21C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E7B113F85780086F21C /* libHammer.a */,
+				D4551E7D113F85780086F21C /* Hammer.framework */,
+				D4551E7F113F85780086F21C /* Tests.octest */,
+				D4551E81113F85780086F21C /* Measure Performance */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4551E8C113F85C20086F21C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4551E95113F85C20086F21C /* libAuspicion.a */,
+				D4551E97113F85C20086F21C /* Auspicion.framework */,
+				D4551E99113F85C20086F21C /* libAuspicionLLVM.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4551EC1113F88700086F21C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				D4551EC2113F88700086F21C /* Fixtures */,
+				D4551EC5113F88700086F21C /* HammerAlternationRuleTests.h */,
+				D4551EC6113F88700086F21C /* HammerAlternationRuleTests.m */,
+				D4551EC7113F88700086F21C /* HammerBuilderTests.m */,
+				D4551EC8113F88700086F21C /* HammerCharacterRuleTests.h */,
+				D4551EC9113F88700086F21C /* HammerCharacterRuleTests.m */,
+				D4551ECA113F88700086F21C /* HammerCharacterSetRuleTests.h */,
+				D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */,
+				D4551ECC113F88700086F21C /* HammerConcatenationRuleTests.h */,
+				D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */,
+				D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */,
+				D4551ECF113F88700086F21C /* HammerLiteralConcatenationRuleTests.h */,
+				D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */,
+				D4551ED1113F88700086F21C /* HammerLiteralRuleTests.h */,
+				D4551ED2113F88700086F21C /* HammerLiteralRuleTests.m */,
+				D4551ED3113F88700086F21C /* HammerLookaheadRuleTests.h */,
+				D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */,
+				D4551ED5113F88700086F21C /* HammerNamedRuleTests.h */,
+				D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */,
+				D4551ED7113F88700086F21C /* HammerParserTests.m */,
+				D4551ED8113F88700086F21C /* HammerReferenceRuleTests.h */,
+				D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */,
+				D4551EDA113F88700086F21C /* HammerRepetitionRuleTests.h */,
+				D4551EDB113F88700086F21C /* HammerRepetitionRuleTests.m */,
+				D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */,
+				D4551EDD113F88700086F21C /* HammerRuleTests.h */,
+				D4551EDE113F88700086F21C /* HammerRuleTests.m */,
+				D4551EDF113F88700086F21C /* HammerTestParser.h */,
+				D4551EE0113F88700086F21C /* HammerTestParser.m */,
+				D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */,
+				D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		D4551EC2113F88700086F21C /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				D4551EC3113F88700086F21C /* digit.grammar */,
+				D4551EC4113F88700086F21C /* letter.grammar */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		D4551EF6113F88930086F21C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D4551EF7113F88A00086F21C /* Hammer.grammar */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D4551F08113F8E0A0086F21C /* RXAssertions */ = {
+			isa = PBXGroup;
+			children = (
+				D4551F09113F8E270086F21C /* RXAssertions.h */,
+				D4551F0A113F8E270086F21C /* RXAssertions.m */,
+			);
+			path = RXAssertions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F960486AA7600D96B5E /* hammerc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "hammerc" */;
+			buildPhases = (
+				8DD76F990486AA7600D96B5E /* Sources */,
+				8DD76F9B0486AA7600D96B5E /* Frameworks */,
+				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4551DFF113E48B20086F21C /* PBXTargetDependency */,
+			);
+			name = hammerc;
+			productInstallPath = "$(HOME)/bin";
+			productName = hammerc;
+			productReference = 8DD76FA10486AA7600D96B5E /* hammerc */;
+			productType = "com.apple.product-type.tool";
+		};
+		D4551DF9113E48A90086F21C /* bootstrap-hammerc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4551E02113E621B0086F21C /* Build configuration list for PBXNativeTarget "bootstrap-hammerc" */;
+			buildPhases = (
+				D4551DF7113E48A90086F21C /* Sources */,
+				D4551DF8113E48A90086F21C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4551E9D113F85D70086F21C /* PBXTargetDependency */,
+				D4551E9F113F85DA0086F21C /* PBXTargetDependency */,
+			);
+			name = "bootstrap-hammerc";
+			productName = "bootstrap-hammerc";
+			productReference = D4551DFA113E48A90086F21C /* bootstrap-hammerc */;
+			productType = "com.apple.product-type.tool";
+		};
+		D4551E27113F5F6D0086F21C /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4551E2C113F5F6D0086F21C /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				D4551E24113F5F6D0086F21C /* Sources */,
+				D4551E23113F5F6D0086F21C /* Resources */,
+				D4551E25113F5F6D0086F21C /* Frameworks */,
+				D4551E26113F5F6D0086F21C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4551EFE113F88CA0086F21C /* PBXTargetDependency */,
+				D4551F00113F88CA0086F21C /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = D4551E28113F5F6D0086F21C /* Tests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "hammerc" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 08FB7794FE84155DC02AAC07 /* hammerc */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D4551E8C113F85C20086F21C /* Products */;
+					ProjectRef = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+				},
+				{
+					ProductGroup = D4551E6F113F85780086F21C /* Products */;
+					ProjectRef = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				8DD76F960486AA7600D96B5E /* hammerc */,
+				D4551DF9113E48A90086F21C /* bootstrap-hammerc */,
+				D4551E27113F5F6D0086F21C /* Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D4551E7B113F85780086F21C /* libHammer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libHammer.a;
+			remoteRef = D4551E7A113F85780086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E7D113F85780086F21C /* Hammer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Hammer.framework;
+			remoteRef = D4551E7C113F85780086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E7F113F85780086F21C /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = D4551E7E113F85780086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E81113F85780086F21C /* Measure Performance */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = "Measure Performance";
+			remoteRef = D4551E80113F85780086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E95113F85C20086F21C /* libAuspicion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAuspicion.a;
+			remoteRef = D4551E94113F85C20086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E97113F85C20086F21C /* Auspicion.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Auspicion.framework;
+			remoteRef = D4551E96113F85C20086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4551E99113F85C20086F21C /* libAuspicionLLVM.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAuspicionLLVM.a;
+			remoteRef = D4551E98113F85C20086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4551E23113F5F6D0086F21C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551EE3113F88700086F21C /* digit.grammar in Resources */,
+				D4551EE4113F88700086F21C /* letter.grammar in Resources */,
+				D4551EF8113F88A00086F21C /* Hammer.grammar in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D4551E26113F5F6D0086F21C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F990486AA7600D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551E4E113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
+				D4551E4F113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
+				D4551E54113F5FEF0086F21C /* hammerc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4551DF7113E48A90086F21C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551E4C113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
+				D4551E4D113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
+				D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4551E24113F5F6D0086F21C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4551E3C113F5FB10086F21C /* HammerCompiledAlternationRuleTests.m in Sources */,
+				D4551E3D113F5FB10086F21C /* HammerCompiledCharacterRuleTests.m in Sources */,
+				D4551E3E113F5FB10086F21C /* HammerCompiledCharacterSetRuleTests.m in Sources */,
+				D4551E3F113F5FB10086F21C /* HammerCompiledConcatenationRuleTests.m in Sources */,
+				D4551E40113F5FB10086F21C /* HammerCompiledLiteralConcatenationRuleTests.m in Sources */,
+				D4551E41113F5FB10086F21C /* HammerCompiledLiteralRuleTests.m in Sources */,
+				D4551E42113F5FB10086F21C /* HammerCompiledLookaheadRuleTests.m in Sources */,
+				D4551E43113F5FB10086F21C /* HammerCompiledNamedRuleTests.m in Sources */,
+				D4551E44113F5FB10086F21C /* HammerCompiledReferenceRuleTests.m in Sources */,
+				D4551E45113F5FB10086F21C /* HammerCompiledRepetitionRuleTests.m in Sources */,
+				D4551E46113F5FB10086F21C /* HammerRuleCompilerTests.m in Sources */,
+				D4551EBE113F88450086F21C /* HammerCompiledRule.m in Sources */,
+				D4551EBF113F88450086F21C /* HammerRuleCompiler.m in Sources */,
+				D4551EE5113F88700086F21C /* HammerAlternationRuleTests.m in Sources */,
+				D4551EE6113F88700086F21C /* HammerBuilderTests.m in Sources */,
+				D4551EE7113F88700086F21C /* HammerCharacterRuleTests.m in Sources */,
+				D4551EE8113F88700086F21C /* HammerCharacterSetRuleTests.m in Sources */,
+				D4551EE9113F88700086F21C /* HammerConcatenationRuleTests.m in Sources */,
+				D4551EEA113F88700086F21C /* HammerContainerRuleTests.m in Sources */,
+				D4551EEB113F88700086F21C /* HammerLiteralConcatenationRuleTests.m in Sources */,
+				D4551EEC113F88700086F21C /* HammerLiteralRuleTests.m in Sources */,
+				D4551EED113F88700086F21C /* HammerLookaheadRuleTests.m in Sources */,
+				D4551EEE113F88700086F21C /* HammerNamedRuleTests.m in Sources */,
+				D4551EEF113F88700086F21C /* HammerParserTests.m in Sources */,
+				D4551EF0113F88700086F21C /* HammerReferenceRuleTests.m in Sources */,
+				D4551EF1113F88700086F21C /* HammerRepetitionRuleTests.m in Sources */,
+				D4551EF2113F88700086F21C /* HammerRulePrinterTests.m in Sources */,
+				D4551EF3113F88700086F21C /* HammerRuleTests.m in Sources */,
+				D4551EF4113F88700086F21C /* HammerTestParser.m in Sources */,
+				D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */,
+				D4551F0B113F8E270086F21C /* RXAssertions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4551DFF113E48B20086F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4551DF9113E48A90086F21C /* bootstrap-hammerc */;
+			targetProxy = D4551DFE113E48B20086F21C /* PBXContainerItemProxy */;
+		};
+		D4551E9D113F85D70086F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Hammer (Static Library)";
+			targetProxy = D4551E9C113F85D70086F21C /* PBXContainerItemProxy */;
+		};
+		D4551E9F113F85DA0086F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Auspicion (Static Library)";
+			targetProxy = D4551E9E113F85DA0086F21C /* PBXContainerItemProxy */;
+		};
+		D4551EFE113F88CA0086F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Auspicion (Static Library)";
+			targetProxy = D4551EFD113F88CA0086F21C /* PBXContainerItemProxy */;
+		};
+		D4551F00113F88CA0086F21C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Hammer (Static Library)";
+			targetProxy = D4551EFF113F88CA0086F21C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB927508733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lstdc++",
+				);
+				PRODUCT_NAME = hammerc;
+			};
+			name = Debug;
+		};
+		1DEB927608733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lstdc++",
+				);
+				PRODUCT_NAME = hammerc;
+			};
+			name = Release;
+		};
+		1DEB927908733DD40010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		1DEB927A08733DD40010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.5;
+			};
+			name = Release;
+		};
+		D4551DFC113E48A90086F21C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lstdc++",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "bootstrap-hammerc";
+			};
+			name = Debug;
+		};
+		D4551DFD113E48A90086F21C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INSTALL_PATH = /usr/local/bin;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-lstdc++",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "bootstrap-hammerc";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		D4551E2A113F5F6D0086F21C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INFOPLIST_FILE = "Resources/Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-lstdc++",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				USER_HEADER_SEARCH_PATHS = External/Include/Hammer/;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D4551E2B113F5F6D0086F21C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				HEADER_SEARCH_PATHS = External/Include/;
+				INFOPLIST_FILE = "Resources/Tests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-lstdc++",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Tests;
+				USER_HEADER_SEARCH_PATHS = External/Include/Hammer/;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "hammerc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927508733DD40010E9CD /* Debug */,
+				1DEB927608733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "hammerc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB927908733DD40010E9CD /* Debug */,
+				1DEB927A08733DD40010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4551E02113E621B0086F21C /* Build configuration list for PBXNativeTarget "bootstrap-hammerc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4551DFC113E48A90086F21C /* Debug */,
+				D4551DFD113E48A90086F21C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4551E2C113F5F6D0086F21C /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4551E2A113F5F6D0086F21C /* Debug */,
+				D4551E2B113F5F6D0086F21C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

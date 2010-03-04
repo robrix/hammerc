@@ -1,0 +1,9 @@
+[submodule "External/Hammer"]
+	path = External/Hammer
+	url = git://github.com/robrix/hammer.git
+[submodule "External/Auspicion"]
+	path = External/Auspicion
+	url = git://github.com/robrix/auspicion.git
+[submodule "External/RXAssertions"]
+	path = External/RXAssertions
+	url = git://github.com/robrix/RXAssertions.git
