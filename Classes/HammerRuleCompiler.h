@@ -3,14 +3,11 @@
 // Copyright 2009 Monochrome Industries
 
 #import <Foundation/Foundation.h>
+#import <Hammer/Hammer.h>
 
-@class HammerParser, HammerRulePrinter;
 @class LLVMBuilder, LLVMContext, LLVMModule, LLVMType;
-@protocol HammerRuleVisitor;
 
-@interface HammerRuleCompiler : NSObject {
-	HammerParser *parser;
-	
+@interface HammerRuleCompiler : HammerRuleVisitor {
 	LLVMBuilder *builder;
 	LLVMContext *context;
 	
@@ -21,8 +18,6 @@
 	NSMutableArray *builtFunctionsStack;
 }
 
-@property (nonatomic, retain) HammerParser *parser;
-
--(HammerRule *)compileRule:(HammerRule *)rule;
+-(HammerRuleRef)compileRule:(HammerRuleRef)rule;
 
 @end

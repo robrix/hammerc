@@ -2,7 +2,7 @@
 // Created by Rob Rix on 2009-12-23
 // Copyright 2009 Monochrome Industries
 
-#import <Hammer/HammerRule.h>
+#import <Hammer/Hammer.h>
 
 @class LLVMCompiler, LLVMFunction;
 
@@ -16,25 +16,34 @@
 
 @end
 
-typedef NSUInteger(*HammerCompiledRuleLengthOfMatchFunction)(NSUInteger, HammerParser *);
-typedef BOOL(*HammerCompiledRuleRangeOfMatchFunction)(NSRange *, NSUInteger, HammerParser *);
+typedef HammerIndex(*HammerCompiledRuleLengthOfMatchFunction)(HammerIndex, HammerParserState *);
+typedef BOOL(*HammerCompiledRuleRangeOfMatchFunction)(NSRange *, HammerIndex, HammerParserState *);
 
-@interface HammerCompiledRule : HammerRule {
-	HammerRule *original;
-	HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
-	HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
-}
+typedef struct HammerCompiledRule * HammerCompiledRuleRef;
 
-+(id)ruleWithOriginalRule:(HammerRule *)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
--(id)initWithOriginalRule:(HammerRule *)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
+HammerCompiledRuleRef HammerCompiledRuleCreate(HammerRuleRef source, HammerCompiledRuleLengthOfMatchFunction lengthOfMatch, HammerCompiledRuleRangeOfMatchFunction rangeOfMatch);
 
-@property (nonatomic, readonly) HammerRule *original;
+HammerRuleRef HammerCompiledRuleGetSourceRule(HammerCompiledRuleRef self);
 
-@property (nonatomic, readonly) HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
-// @property (nonatomic, readonly) HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
+HammerCompiledRuleLengthOfMatchFunction HammerCompiledRuleGetLengthOfMatchFunction(HammerCompiledRuleRef self);
+HammerCompiledRuleRangeOfMatchFunction HammerCompiledRuleGetRangeOfMatchFunction(HammerCompiledRuleRef self);
 
-@end
-
-
-HammerCompiledRuleLengthOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParser *parser, NSString *reference);
-// HammerCompiledRuleRangeOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParser *parser, NSString *reference);
+// @interface HammerCompiledRule : HammerRule {
+// 	HammerRuleRef original;
+// 	HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
+// 	HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
+// }
+// 
+// +(id)ruleWithOriginalRule:(HammerRuleRef)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
+// -(id)initWithOriginalRule:(HammerRuleRef)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
+// 
+// @property (nonatomic, readonly) HammerRuleRef original;
+// 
+// @property (nonatomic, readonly) HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
+// // @property (nonatomic, readonly) HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
+// 
+// @end
+// 
+// 
+// HammerCompiledRuleLengthOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParserState *parser, NSString *reference);
+// // HammerCompiledRuleRangeOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParser *parser, NSString *reference);

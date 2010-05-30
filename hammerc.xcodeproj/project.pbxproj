@@ -53,7 +53,11 @@
 		D4551EF8113F88A00086F21C /* Hammer.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EF7113F88A00086F21C /* Hammer.grammar */; };
 		D4551EFB113F88B80086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
 		D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
-		D4551F0B113F8E270086F21C /* RXAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551F0A113F8E270086F21C /* RXAssertions.m */; };
+		D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
+		D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
+		D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
+		D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
+		D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B24BC11B25720007CBBB4 /* RXAssertions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,85 +65,106 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D4551DF9113E48A90086F21C /* bootstrap-hammerc */;
+			remoteGlobalIDString = D4551DF9113E48A90086F21C;
 			remoteInfo = "bootstrap-hammerc";
 		};
 		D4551E7A113F85780086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4041AB1113BB80D005F156E /* libHammer.a */;
+			remoteGlobalIDString = D4041AB1113BB80D005F156E;
 			remoteInfo = "Hammer (Static Library)";
-		};
-		D4551E7C113F85780086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216 /* Hammer.framework */;
-			remoteInfo = Hammer;
 		};
 		D4551E7E113F85780086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4DB11D60D138C7400C730A3 /* Tests.octest */;
+			remoteGlobalIDString = D4DB11D60D138C7400C730A3;
 			remoteInfo = Tests;
 		};
 		D4551E80113F85780086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D404EB4610F5791C007612E9 /* Measure Performance */;
+			remoteGlobalIDString = D404EB4610F5791C007612E9;
 			remoteInfo = "Measure Performance";
 		};
 		D4551E94113F85C20086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libAuspicion.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4551E96113F85C20086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D407954F10EB27140061CF6C /* Auspicion.framework */;
+			remoteGlobalIDString = D407954F10EB27140061CF6C;
 			remoteInfo = "Auspicion (Framework)";
 		};
 		D4551E98113F85C20086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90 /* libAuspicionLLVM.a */;
+			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90;
 			remoteInfo = AuspicionLLVM;
 		};
 		D4551E9C113F85D70086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D4041AB0113BB80D005F156E /* Hammer (Static Library) */;
+			remoteGlobalIDString = D4041AB0113BB80D005F156E;
 			remoteInfo = "Hammer (Static Library)";
 		};
 		D4551E9E113F85DA0086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4551EFD113F88CA0086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4551EFF113F88CA0086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D4041AB0113BB80D005F156E /* Hammer (Static Library) */;
+			remoteGlobalIDString = D4041AB0113BB80D005F156E;
 			remoteInfo = "Hammer (Static Library)";
+		};
+		D48B24E111B25721007CBBB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC046055464E500DB518D /* libPolymorph.a */;
+			remoteInfo = Polymorph;
+		};
+		D48B24E311B25721007CBBB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4AB04351180335A0048BBA1 /* Tests.octest */;
+			remoteInfo = Tests;
+		};
+		D48B24EA11B25721007CBBB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libRXAssertions.a */;
+			remoteInfo = RXAssertions;
+		};
+		D48B24EC11B25721007CBBB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D442A488106FD94900944F07 /* Tests.octest */;
+			remoteInfo = Tests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -215,8 +240,19 @@
 		D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestRuleVisitor.h; sourceTree = "<group>"; };
 		D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestRuleVisitor.m; sourceTree = "<group>"; };
 		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hammer.grammar; sourceTree = "<group>"; };
-		D4551F09113F8E270086F21C /* RXAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAssertions.h; sourceTree = "<group>"; };
-		D4551F0A113F8E270086F21C /* RXAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAssertions.m; sourceTree = "<group>"; };
+		D48B23E711B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMModule+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
+		D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLVMModule+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
+		D48B23E911B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMType+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
+		D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLVMType+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
+		D48B247911B25720007CBBB4 /* RXAllocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAllocation.h; sourceTree = "<group>"; };
+		D48B247B11B25720007CBBB4 /* RXCoreFoundationIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCoreFoundationIntegration.h; sourceTree = "<group>"; };
+		D48B247D11B25720007CBBB4 /* RXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXObject.h; sourceTree = "<group>"; };
+		D48B248011B25720007CBBB4 /* RXObjectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXObjectType.h; sourceTree = "<group>"; };
+		D48B248111B25720007CBBB4 /* RXShadowObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXShadowObject.h; sourceTree = "<group>"; };
+		D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Polymorph.xcodeproj; sourceTree = "<group>"; };
+		D48B24BB11B25720007CBBB4 /* RXAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAssertions.h; sourceTree = "<group>"; };
+		D48B24BC11B25720007CBBB4 /* RXAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAssertions.m; sourceTree = "<group>"; };
+		D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RXAssertions.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +289,7 @@
 		08FB7794FE84155DC02AAC07 /* hammerc */ = {
 			isa = PBXGroup;
 			children = (
+				D48B23E611B24D5E007CBBB4 /* Categories */,
 				08FB7795FE84155DC02AAC07 /* Classes */,
 				D4551E50113F5FEF0086F21C /* Other Sources */,
 				D4551E30113F5FB10086F21C /* Tests */,
@@ -334,7 +371,6 @@
 			children = (
 				D4551E6D113F855E0086F21C /* Auspicion */,
 				D4551E6C113F85530086F21C /* Hammer */,
-				D4551F08113F8E0A0086F21C /* RXAssertions */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -343,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				D4551E6E113F85780086F21C /* Hammer.xcodeproj */,
+				D48B244C11B25720007CBBB4 /* External */,
 				D4551EF6113F88930086F21C /* Resources */,
 				D4551EC1113F88700086F21C /* Tests */,
 			);
@@ -361,7 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				D4551E7B113F85780086F21C /* libHammer.a */,
-				D4551E7D113F85780086F21C /* Hammer.framework */,
 				D4551E7F113F85780086F21C /* Tests.octest */,
 				D4551E81113F85780086F21C /* Measure Performance */,
 			);
@@ -433,13 +469,73 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D4551F08113F8E0A0086F21C /* RXAssertions */ = {
+		D48B23E611B24D5E007CBBB4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				D4551F09113F8E270086F21C /* RXAssertions.h */,
-				D4551F0A113F8E270086F21C /* RXAssertions.m */,
+				D48B23E711B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.h */,
+				D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */,
+				D48B23E911B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.h */,
+				D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		D48B244C11B25720007CBBB4 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				D48B244D11B25720007CBBB4 /* Polymorph */,
+				D48B249111B25720007CBBB4 /* RXAssertions */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		D48B244D11B25720007CBBB4 /* Polymorph */ = {
+			isa = PBXGroup;
+			children = (
+				D48B247811B25720007CBBB4 /* Classes */,
+				D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */,
+			);
+			path = Polymorph;
+			sourceTree = "<group>";
+		};
+		D48B247811B25720007CBBB4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D48B247911B25720007CBBB4 /* RXAllocation.h */,
+				D48B247B11B25720007CBBB4 /* RXCoreFoundationIntegration.h */,
+				D48B247D11B25720007CBBB4 /* RXObject.h */,
+				D48B248011B25720007CBBB4 /* RXObjectType.h */,
+				D48B248111B25720007CBBB4 /* RXShadowObject.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D48B248B11B25720007CBBB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D48B24E211B25721007CBBB4 /* libPolymorph.a */,
+				D48B24E411B25721007CBBB4 /* Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D48B249111B25720007CBBB4 /* RXAssertions */ = {
+			isa = PBXGroup;
+			children = (
+				D48B24BB11B25720007CBBB4 /* RXAssertions.h */,
+				D48B24BC11B25720007CBBB4 /* RXAssertions.m */,
+				D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */,
 			);
 			path = RXAssertions;
+			sourceTree = "<group>";
+		};
+		D48B24BF11B25720007CBBB4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D48B24EB11B25721007CBBB4 /* libRXAssertions.a */,
+				D48B24ED11B25721007CBBB4 /* Tests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -521,6 +617,14 @@
 					ProductGroup = D4551E6F113F85780086F21C /* Products */;
 					ProjectRef = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 				},
+				{
+					ProductGroup = D48B248B11B25720007CBBB4 /* Products */;
+					ProjectRef = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
+				},
+				{
+					ProductGroup = D48B24BF11B25720007CBBB4 /* Products */;
+					ProjectRef = D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -537,13 +641,6 @@
 			fileType = archive.ar;
 			path = libHammer.a;
 			remoteRef = D4551E7A113F85780086F21C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4551E7D113F85780086F21C /* Hammer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Hammer.framework;
-			remoteRef = D4551E7C113F85780086F21C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D4551E7F113F85780086F21C /* Tests.octest */ = {
@@ -579,6 +676,34 @@
 			fileType = archive.ar;
 			path = libAuspicionLLVM.a;
 			remoteRef = D4551E98113F85C20086F21C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D48B24E211B25721007CBBB4 /* libPolymorph.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPolymorph.a;
+			remoteRef = D48B24E111B25721007CBBB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D48B24E411B25721007CBBB4 /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = D48B24E311B25721007CBBB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D48B24EB11B25721007CBBB4 /* libRXAssertions.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRXAssertions.a;
+			remoteRef = D48B24EA11B25721007CBBB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D48B24ED11B25721007CBBB4 /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = D48B24EC11B25721007CBBB4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -621,6 +746,8 @@
 				D4551E4E113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
 				D4551E4F113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
 				D4551E54113F5FEF0086F21C /* hammerc.m in Sources */,
+				D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
+				D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +758,8 @@
 				D4551E4C113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
 				D4551E4D113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
 				D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */,
+				D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
+				D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +797,7 @@
 				D4551EF3113F88700086F21C /* HammerRuleTests.m in Sources */,
 				D4551EF4113F88700086F21C /* HammerTestParser.m in Sources */,
 				D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */,
-				D4551F0B113F8E270086F21C /* RXAssertions.m in Sources */,
+				D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,17 +835,15 @@
 		1DEB927508733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -737,6 +864,10 @@
 				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
 				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -749,16 +880,21 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = supported;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = External/Include/;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -779,16 +915,14 @@
 		D4551DFC113E48A90086F21C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -811,6 +945,10 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
 				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,

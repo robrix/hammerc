@@ -1,3 +1,4 @@
-- include Hammer in Extermal @done(2010-03-04)
-- include Auspicion in External @done(2010-03-04)
-- make a static library of Auspicion @done(2010-03-04)
+- write a parser for `@encode()` directive strings.
+- provide JIT-compiled implementations of the match methods for rules, written in Auspicion. Use those in Hammer, and use them in hammerc as the components of the static compilation.
+	Is that even possible, i.e. resolving function calls and replacing them with static ones?
+- inline everything.
