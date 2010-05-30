@@ -1,0 +1,1 @@
+../../../External/Hammer/Classes/Rules/HammerNAryRule.h
