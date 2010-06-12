@@ -59,7 +59,6 @@
 			[module typeNamed: @"HammerParserState *"],
 		nil] forName: @"HammerRuleLengthOfMatchFunction"];
 		
-		NSLog(@"NSRange: %@", [module typeNamed: @"NSRange"]);
 		[module setType: [LLVMType functionType: context.int1Type,
 			[LLVMType pointerTypeToType: [module typeNamed: @"NSRange"]],
 			[module typeNamed: @"HammerIndex"],
