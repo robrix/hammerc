@@ -7,8 +7,10 @@
 
 @implementation LLVMModule (LLVMModuleRuntimeTypeEncodings)
 
--(void)setObjCType:(const char *)type forName:(NSString *)name {
-	[self setType: [LLVMType typeForObjCType: type] forName: name];
+-(LLVMType *)setObjCType:(const char *)type forName:(NSString *)name {
+	LLVMType *result = [LLVMType typeForObjCType: type inModule: self];
+	[self setType: result forName: name];
+	return result;
 }
 
 @end

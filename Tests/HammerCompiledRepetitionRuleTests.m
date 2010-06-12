@@ -10,16 +10,16 @@
 
 @implementation HammerCompiledRepetitionRuleTests
 
--(HammerRule *)optionalRule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.optionalRule];
+-(HammerRepetitionRuleRef)optionalRule {
+	return [[HammerRuleCompiler compiler] compileRule: super.optionalRule];
 }
 
--(HammerRule *)optionallyRepeatedRule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.optionallyRepeatedRule];
+-(HammerRepetitionRuleRef)optionallyRepeatedRule {
+	return [[HammerRuleCompiler compiler] compileRule: super.optionallyRepeatedRule];
 }
 
--(HammerRule *)repeatedRule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.repeatedRule];
+-(HammerRepetitionRuleRef)repeatedRule {
+	return [[HammerRuleCompiler compiler] compileRule: super.repeatedRule];
 }
 
 @end

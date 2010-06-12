@@ -6,6 +6,6 @@
 
 @interface LLVMType (LLVMTypeRuntimeTypeEncodings)
 
-+(LLVMType *)typeForObjCType:(const char *)type;
++(LLVMType *)typeForObjCType:(const char *)type inModule:(LLVMModule *)module;
 
 @end

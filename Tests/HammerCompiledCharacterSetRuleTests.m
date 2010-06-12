@@ -10,8 +10,8 @@
 
 @implementation HammerCompiledCharacterSetRuleTests
 
--(HammerRule *)rule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.rule];
+-(HammerRuleRef)rule {
+	return [[HammerRuleCompiler compiler] compileRule: super.rule];
 }
 
 @end

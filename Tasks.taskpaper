@@ -2,3 +2,8 @@
 - provide JIT-compiled implementations of the match methods for rules, written in Auspicion. Use those in Hammer, and use them in hammerc as the components of the static compilation.
 	Is that even possible, i.e. resolving function calls and replacing them with static ones?
 - inline everything.
+
+Tools:
+	- Xcode plugin with a build rule for .grammar files.
+	- header generator.
+	- Generation Gap builder scaffold tool (like mogenerator but based on a grammar).

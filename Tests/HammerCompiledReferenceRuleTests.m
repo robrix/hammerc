@@ -7,24 +7,23 @@
 #import "HammerReferenceRule.h"
 #import "HammerReferenceRuleTests.h"
 #import "HammerRuleCompiler.h"
-#import "HammerTestParser.h"
 
 @interface HammerCompiledReferenceRuleTests : HammerReferenceRuleTests
 @end
 
 @implementation HammerCompiledReferenceRuleTests
 
--(HammerRule *)rule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.rule];
+-(HammerRuleRef)rule {
+	return [[HammerRuleCompiler compiler] compileRule: super.rule];
 }
 
 -(void)setUp {
 	[super setUp];
 	HammerRuleCompiler *compiler = [[HammerRuleCompiler alloc] init];
-	parser.rules = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-		[compiler compileRule: [HammerCharacterRule rule]], @"any",
-		[compiler compileRule: [HammerConcatenationRule ruleWithSubrules: [NSArray arrayWithObjects: [HammerReferenceRule ruleWithReference: @"any"], [HammerReferenceRule ruleWithReference: @"any"], nil]]], @"anyTwo",
-	nil];
+	state.ruleGraph = (HammerRuleGraphRef)RXDictionary(
+		[compiler compileRule: HammerCharacterRuleCreate()], @"any",
+		[compiler compileRule: HammerConcatenationRuleCreate(RXArray(HammerReferenceRuleCreate(@"any"), HammerReferenceRuleCreate(@"any"), NULL))], @"anyTwo",
+	NULL);
 	[compiler release];
 }
 

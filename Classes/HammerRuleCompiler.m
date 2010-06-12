@@ -5,8 +5,8 @@
 #import "HammerCompiledRule.h"
 #import "HammerRuleCompiler.h"
 
-#import <Auspicion/Auspicion.h>
-#import <Hammer/Hammer.h>
+#import "Auspicion.h"
+#import "Hammer.h"
 
 #import "LLVMModule+RuntimeTypeEncodings.h"
 
@@ -22,6 +22,10 @@
 
 @implementation HammerRuleCompiler
 
++(id)compiler {
+	return [[[self alloc] init] autorelease];
+}
+
 -(id)init {
 	if(self = [super init]) {
 		context = [[LLVMContext context] retain];
@@ -30,19 +34,32 @@
 		module = [[LLVMModule moduleWithName: @"HammerRuleCompilerModule" inContext: context] retain];
 		
 		LLVMModuleImportType(module, HammerIndex);
-		LLVMModuleImportType(module, NSRange);
+		LLVMStructureType *rangeType = (LLVMStructureType *)LLVMModuleImportType(module, NSRange);
+		[rangeType declareElementNames: [NSArray arrayWithObjects:
+			@"location",
+			@"length",
+		nil]];
 		
 		LLVMModuleImportType(module, HammerRuleRef);
 		LLVMModuleImportType(module, HammerSequenceRef);
 		LLVMModuleImportType(module, HammerMatchRef);
 		LLVMModuleImportType(module, NSString *);
-		LLVMModuleImportType(module, HammerParserState *);
+		LLVMStructureType *parserStateType = (LLVMStructureType *)LLVMModuleImportType(module, HammerParserState);
+		[parserStateType declareElementNames: [NSArray arrayWithObjects:
+			@"sequence",
+			@"errorContext",
+			@"matchContext",
+			@"ruleGraph",
+			@"isIgnoringMatches",
+		nil]];
+		[module setType: [LLVMType pointerTypeToType: parserStateType] forName: @"HammerParserState *"];
 		
 		[module setType: [LLVMType functionType: context.integerType,
 			[module typeNamed: @"HammerIndex"],
 			[module typeNamed: @"HammerParserState *"],
 		nil] forName: @"HammerRuleLengthOfMatchFunction"];
 		
+		NSLog(@"NSRange: %@", [module typeNamed: @"NSRange"]);
 		[module setType: [LLVMType functionType: context.int1Type,
 			[LLVMType pointerTypeToType: [module typeNamed: @"NSRange"]],
 			[module typeNamed: @"HammerIndex"],
@@ -85,7 +102,7 @@
 		return nil;
 	}
 	
-	LLVMCompiler *compiler = [LLVMCompiler sharedCompiler];
+	LLVMCompiler *compiler = [LLVMCompiler compilerWithContext: context];
 	[compiler addModule: module];
 	
 	LLVMOptimizer *optimizer = [LLVMOptimizer optimizerWithCompiler: compiler];
@@ -108,48 +125,49 @@
 }
 
 
-/*
 -(LLVMFunction *)lengthOfIgnorableCharactersFunction {
-	return [module functionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [LLVMType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState *"], [module typeNamed: @"HammerIndex"]] definition: ^(LLVMFunctionBuilder *) {
-		LLVMValue
-			*length = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: LLVMConstant(NSNotFound)],
-			*ignorableRule = [function allocateVariableOfType: [module typeNamed: @"HammerRuleRef"] value: [[self ruleGraphGetRuleForNameFunction] call: ]];
+	return [module externalFunctionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [LLVMType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState *"], [module typeNamed: @"HammerIndex"]]];
+/*
+	return [module functionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [LLVMType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState *"], [module typeNamed: @"HammerIndex"]] definition: ^(LLVMFunctionBuilder *function) {
+		LLVMPointerValue
+			*length = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: [context constantUnsignedInteger: NSNotFound]],
+			*ignorableRule = [function allocateVariableOfType: [module typeNamed: @"HammerRuleRef"] value: [[self ruleGraphGetRuleForNameFunction] call: ((LLVMPointerValue *)[function argumentNamed: @"state"]).value elementNamed: @"ruleGraph"]];
 		
 	}];
+*/
 }
 
 
 -(LLVMFunction *)rangeOfMatchSkippingIgnorableCharactersFunctionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(LLVMFunction *)lengthOfMatch {
-	return [module functionWithName: [self nameForFunction: @"rangeOfMatchSkppingIgnorableCharacters" forRule: rule] type: [module typeNamed: @"HammerRuleRangeOfMatchFunction"] definitionBlock: ^(LLVMFunctionBuilder *function) {
-		[function declareArguments: [NSArray arrayWithObjects: @"outrange", @"initial", @"state", nil]];
+	return [module functionWithName: [self nameForFunction: @"rangeOfMatchSkppingIgnorableCharacters" forRule: rule] type: [module typeNamed: @"HammerRuleRangeOfMatchFunction"] definition: ^(LLVMFunctionBuilder *function) {
+		[function declareArgumentNames: [NSArray arrayWithObjects: @"outrange", @"initial", @"state", nil]];
 		
-		LLVMValue
+		LLVMPointerValue
 			*length = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: [lengthOfMatch call: [function argumentNamed: @"initial"], [function argumentNamed: @"state"]]],
-			*ignorable = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: LLVMConstant(NSNotFound)];
+			*ignorable = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: [context constantUnsignedInteger: NSNotFound]];
 		
-		[[length.value equals: LLVMConstant(NSNotFound)] ifTrue: ^{
+		[[length.value equals: [context constantUnsignedInteger: NSNotFound]] ifTrue: ^{
 			ignorable.value = [[self lengthOfIgnorableCharactersFunction] call: [function argumentNamed: @"state"], [function argumentNamed: @"initial"]];
-			[[ignorable.value notEquals: LLVMConstant(NSNotFound)] ifTrue: ^{
+			[[ignorable.value notEquals: [context constantUnsignedInteger: NSNotFound]] ifTrue: ^{
 				length.value = [lengthOfMatch call: [[function argumentNamed: @"initial"] plus: ignorable.value], [function argumentNamed: @"state"]];
 			}];
 		}];
 		
-		[function argumentNamed: @"outrange"].value = [LLVMStruct structWithValues:
-			[[function argumentNamed: @"initial"] plus: [[ignorable.value equals: LLVMConstant(NSNotFound)] select: LLVMConstant(0) or: ignorable.value]],
+		((LLVMStructureValue *)((LLVMPointerValue *)[function argumentNamed: @"outrange"]).value).elements = [NSArray arrayWithObjects:
+			[[function argumentNamed: @"initial"] plus: [[ignorable.value equals: [context constantUnsignedInteger: NSNotFound]] select: [context constantUnsignedInteger: 0] or: ignorable.value]],
 			length.value,
 		nil];
-		[function return: [length notEquals: LLVMConstant(NSNotFound)]];
+		[function return: [length notEquals: [context constantUnsignedInteger: NSNotFound]]];
 	}];
 }
-*/
 
 
 -(LLVMFunction *)defaultRangeOfMatchFunctionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(LLVMFunction *)lengthOfMatch {
 	NSString *name = [self nameForFunction: @"rangeOfMatchFromCursor:withParser:" forRule: rule];
 	
-	LLVMFunction *ignorableCharactersFromCursor = [module declareExternalFunctionWithName: @"HammerParserIgnorableCharactersFromCursor" type: [LLVMType functionType: context.integerType, context.untypedPointerType, context.integerType, nil]];
+	LLVMFunction *ignorableCharactersFromCursor = [module externalFunctionWithName: @"HammerParserIgnorableCharactersFromCursor" type: [LLVMType functionType: context.integerType, context.untypedPointerType, context.integerType, nil]];
 	
-	LLVMFunction *rangeOfMatch = [module functionWithName: name];
+	LLVMFunction *rangeOfMatch = [module functionNamed: name];
 	if(!rangeOfMatch) {
 		rangeOfMatch = [module functionWithName: name typeName: @"HammerRuleRangeOfMatchFunction"];
 		[builder positionAtEndOfFunction: rangeOfMatch];
@@ -166,7 +184,7 @@
 			*ignorable = [builder allocateLocal: @"ignorable" type: context.integerType];
 		
 		// NSUInteger length = [self lengthOfMatchFromCursor: initial withParser: parser];
-		[builder set: length, [builder call: lengthOfMatch, [rangeOfMatch parameterAtIndex: 1], [rangeOfMatch parameterAtIndex: 2], nil]];
+		[builder set: length, [builder call: lengthOfMatch, [rangeOfMatch argumentAtIndex: 1], [rangeOfMatch argumentAtIndex: 2], nil]];
 		
 		// NSUInteger ignorable = NSNotFound;
 		[builder set: ignorable, notFound];
@@ -175,22 +193,22 @@
 		[builder if: [builder equal: [builder get: length], notFound] then: tryIgnorableBlock else: returnBlock];
 		[builder positionAtEndOfBlock: tryIgnorableBlock]; {
 			// ignorable = HammerParserIgnorableCharactersFromCursor(parser, initial);
-			[builder set: ignorable, [builder call: ignorableCharactersFromCursor, [rangeOfMatch parameterAtIndex: 2], [rangeOfMatch parameterAtIndex: 1], nil]];
+			[builder set: ignorable, [builder call: ignorableCharactersFromCursor, [rangeOfMatch argumentAtIndex: 2], [rangeOfMatch argumentAtIndex: 1], nil]];
 			
 			// if(ignorable != NSNotFound)
 			[builder if: [builder notEqual: [builder get: ignorable], notFound] then: retryAfterIgnorableBlock else: returnBlock];
 			[builder positionAtEndOfBlock: retryAfterIgnorableBlock]; {
 				// length = [self lengthOfMatchFromCursor: initial + ignorable withParser: parser];
-				[builder set: length, [builder call: lengthOfMatch, [builder add: [rangeOfMatch parameterAtIndex: 1], [builder get: ignorable]], [rangeOfMatch parameterAtIndex: 2], nil]];
+				[builder set: length, [builder call: lengthOfMatch, [builder add: [rangeOfMatch argumentAtIndex: 1], [builder get: ignorable]], [rangeOfMatch argumentAtIndex: 2], nil]];
 				
 				[builder jumpToBlock: returnBlock];
 			}
 		}
 		
 		[builder positionAtEndOfBlock: returnBlock]; {
-			[builder setElements: [rangeOfMatch parameterAtIndex: 0],
+			[builder setElements: [rangeOfMatch argumentAtIndex: 0],
 				[builder add:
-					[rangeOfMatch parameterAtIndex: 1],
+					[rangeOfMatch argumentAtIndex: 1],
 					[builder condition: [builder equal: [builder get: ignorable], notFound]
 						then: zero
 						else: [builder get: ignorable]
@@ -231,14 +249,14 @@
 
 
 -(LLVMFunction *)parserIsAtEndFunction {
-	return [module declareExternalFunctionWithName: @"HammerParserCursorIsAtEnd" type: [LLVMType functionType: context.int1Type,
+	return [module externalFunctionWithName: @"HammerParserCursorIsAtEnd" type: [LLVMType functionType: context.int1Type,
 		context.untypedPointerType,
 		context.integerType,
 	nil]];
 }
 
 -(LLVMFunction *)parserGetInputStringFunction {
-	return [module declareExternalFunctionWithName: @"HammerParserGetInputString" type: [LLVMType functionType: context.untypedPointerType, context.untypedPointerType, nil]];
+	return [module externalFunctionWithName: @"HammerParserGetInputString" type: [LLVMType functionType: context.untypedPointerType, context.untypedPointerType, nil]];
 }
 
 
@@ -254,7 +272,7 @@
 -(void)leaveAlternationRule:(HammerAlternationRuleRef)rule withVisitedSubrules:(NSArray *)subrules {
 	NSString *name = [self nameForRule: rule];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfBlock: lengthOfMatch.entryBlock];
@@ -269,7 +287,7 @@
 			[builder jumpToBlock: subruleBlock];
 			[builder positionAtEndOfBlock: subruleBlock];
 			
-			[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch parameterAtIndex: 0], [lengthOfMatch parameterAtIndex: 1], nil]];
+			[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch argumentAtIndex: 0], [lengthOfMatch argumentAtIndex: 1], nil]];
 			
 			LLVMBlock *subruleNotMatchedBlock = [lengthOfMatch appendBlockWithName: [NSString stringWithFormat: @"subrule %d not matched", i]];
 			[builder if: [builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]] then: returnBlock else: subruleNotMatchedBlock];
@@ -291,13 +309,13 @@
 -(void)leaveCharacterRule:(HammerCharacterRuleRef)rule {
 	NSString *name = [self nameForRule: rule];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
 		[builder return: [builder condition:
-			[builder not: [builder call: [self parserIsAtEndFunction], [lengthOfMatch parameterAtIndex: 1], [lengthOfMatch parameterAtIndex: 0], nil]]
+			[builder not: [builder call: [self parserIsAtEndFunction], [lengthOfMatch argumentAtIndex: 1], [lengthOfMatch argumentAtIndex: 0], nil]]
 			then: [context constantUnsignedInteger: 1]
 			else: [context constantUnsignedInteger: NSNotFound]
 		]];
@@ -310,23 +328,23 @@
 -(void)leaveCharacterSetRule:(HammerCharacterSetRuleRef)rule {
 	NSString *name = [self nameForRule: rule];
 	
-	LLVMFunction *isCharacterMemberFunction = [module declareExternalFunctionWithName: @"CFCharacterSetIsCharacterMember" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, context.int16Type, nil]];
-	LLVMFunction *characterAtIndexFunction = [module declareExternalFunctionWithName: @"CFStringGetCharacterAtIndex" type: [LLVMType functionType: context.int16Type, context.untypedPointerType, context.integerType, nil]];
+	LLVMFunction *isCharacterMemberFunction = [module externalFunctionWithName: @"CFCharacterSetIsCharacterMember" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, context.int16Type, nil]];
+	LLVMFunction *characterAtIndexFunction = [module externalFunctionWithName: @"CFStringGetCharacterAtIndex" type: [LLVMType functionType: context.int16Type, context.untypedPointerType, context.integerType, nil]];
 	
 	LLVMValue *notFound = [context constantUnsignedInteger: NSNotFound];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
 		[builder return: [builder condition: [builder and:
-				[builder not: [builder call: [self parserIsAtEndFunction], [lengthOfMatch parameterAtIndex: 1], [lengthOfMatch parameterAtIndex: 0], nil]],
+				[builder not: [builder call: [self parserIsAtEndFunction], [lengthOfMatch argumentAtIndex: 1], [lengthOfMatch argumentAtIndex: 0], nil]],
 				[builder call: isCharacterMemberFunction,
 					[context constantUntypedPointer: HammerCharacterSetRuleGetCharacterSet(rule)],
 					[builder call: characterAtIndexFunction,
-						[builder call: [self parserGetInputStringFunction], [lengthOfMatch parameterAtIndex: 1], nil],
-						[lengthOfMatch parameterAtIndex: 0],
+						[builder call: [self parserGetInputStringFunction], [lengthOfMatch argumentAtIndex: 1], nil],
+						[lengthOfMatch argumentAtIndex: 0],
 					nil],
 				nil]
 			]
@@ -336,17 +354,17 @@
 	}
 	
 	name = [self nameForFunction: @"range:ofMatchFromCursor:withParser:" forRule: rule];
-	LLVMFunction *rangeOfMatch = [module functionWithName: name];
+	LLVMFunction *rangeOfMatch = [module functionNamed: name];
 	if(!rangeOfMatch) {
 		rangeOfMatch = [module functionWithName: name typeName: @"HammerRuleRangeOfMatchFunction"];
 		[builder positionAtEndOfFunction: rangeOfMatch];
 		
-		[builder setElements: [rangeOfMatch parameterAtIndex: 0],
-			[rangeOfMatch parameterAtIndex: 1],
+		[builder setElements: [rangeOfMatch argumentAtIndex: 0],
+			[rangeOfMatch argumentAtIndex: 1],
 			[context constantUnsignedInteger: 1],
 		nil];
 		
-		[builder return: [builder notEqual: [builder call: lengthOfMatch, [rangeOfMatch parameterAtIndex: 1], [rangeOfMatch parameterAtIndex: 2], nil], notFound]];
+		[builder return: [builder notEqual: [builder call: lengthOfMatch, [rangeOfMatch argumentAtIndex: 1], [rangeOfMatch argumentAtIndex: 2], nil], notFound]];
 	}
 	
 	HammerBuiltRuleFunctions *functions = [[[HammerBuiltRuleFunctions alloc] init] autorelease];
@@ -361,15 +379,15 @@
 	NSString *name = [self nameForRule: rule];
 	
 	LLVMFunction
-		*pushMatchContext = [module declareExternalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
-		*popMatchContext = [module declareExternalFunctionWithName: @"HammerParserPopAndPassUpMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, nil]];
+		*pushMatchContext = [module externalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
+		*popMatchContext = [module externalFunctionWithName: @"HammerParserPopAndPassUpMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfBlock: lengthOfMatch.entryBlock];
 		
-		[builder call: pushMatchContext, [lengthOfMatch parameterAtIndex: 1], nil];
+		[builder call: pushMatchContext, [lengthOfMatch argumentAtIndex: 1], nil];
 		
 		LLVMValue
 			*length = [builder allocateLocal: @"length" type: context.integerType],
@@ -389,14 +407,14 @@
 			[builder positionAtEndOfBlock: subruleBlock]; {
 				[builder if: [builder call: subruleFunctions.rangeOfMatch,
 					subrange,
-					[builder add: [lengthOfMatch parameterAtIndex: 0], [builder get: length]],
-					[lengthOfMatch parameterAtIndex: 1],
+					[builder add: [lengthOfMatch argumentAtIndex: 0], [builder get: length]],
+					[lengthOfMatch argumentAtIndex: 1],
 				nil] then: subruleFoundBlock else: notFoundBlock];
 			}
 			
 			[builder positionAtEndOfBlock: subruleFoundBlock]; {
 				// length = NSMaxRange(subrange) - initial;
-				[builder set: length, [builder subtract: [builder add: [builder getElement: subrange atIndex: 0], [builder getElement: subrange atIndex: 1]], [lengthOfMatch parameterAtIndex: 0]]];
+				[builder set: length, [builder subtract: [builder add: [builder getElement: subrange atIndex: 0], [builder getElement: subrange atIndex: 1]], [lengthOfMatch argumentAtIndex: 0]]];
 			}
 			
 			i++;
@@ -410,7 +428,7 @@
 		}
 		
 		[builder positionAtEndOfBlock: returnLengthBlock]; {
-			[builder call: popMatchContext, [lengthOfMatch parameterAtIndex: 1], [builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]], nil];
+			[builder call: popMatchContext, [lengthOfMatch argumentAtIndex: 1], [builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]], nil];
 			[builder return: [builder get: length]];
 		}
 	}
@@ -422,10 +440,10 @@
 	NSString *name = [self nameForRule: rule];
 	
 	LLVMFunction
-		*getAttemptsIgnorableRule = [module declareExternalFunctionWithName: @"HammerParserGetAttemptsIgnorableRule" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, nil]],
-		*setAttemptsIgnorableRule = [module declareExternalFunctionWithName: @"HammerParserSetAttemptsIgnorableRule" type: [LLVMType functionType: context.voidType, context.untypedPointerType, context.int1Type, nil]];
+		*getAttemptsIgnorableRule = [module externalFunctionWithName: @"HammerParserGetAttemptsIgnorableRule" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, nil]],
+		*setAttemptsIgnorableRule = [module externalFunctionWithName: @"HammerParserSetAttemptsIgnorableRule" type: [LLVMType functionType: context.voidType, context.untypedPointerType, context.int1Type, nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfBlock: lengthOfMatch.entryBlock];
@@ -434,13 +452,13 @@
 			*attemptsIgnorableRule = [builder allocateLocal: @"attemptsIgnorableRule" type: context.int1Type],
 			*length = [builder allocateLocal: @"length" type: context.integerType];
 		
-		[builder set: attemptsIgnorableRule, [builder call: getAttemptsIgnorableRule, [lengthOfMatch parameterAtIndex: 1], nil]];
+		[builder set: attemptsIgnorableRule, [builder call: getAttemptsIgnorableRule, [lengthOfMatch argumentAtIndex: 1], nil]];
 		
-		[builder call: setAttemptsIgnorableRule, [lengthOfMatch parameterAtIndex: 1], [context constantNullOfType: context.int1Type], nil];
+		[builder call: setAttemptsIgnorableRule, [lengthOfMatch argumentAtIndex: 1], [context constantNullOfType: context.int1Type], nil];
 		
-		[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch parameterAtIndex: 0], [lengthOfMatch parameterAtIndex: 1], nil]];
+		[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch argumentAtIndex: 0], [lengthOfMatch argumentAtIndex: 1], nil]];
 		
-		[builder call: setAttemptsIgnorableRule, [lengthOfMatch parameterAtIndex: 1], [builder get: attemptsIgnorableRule], nil];
+		[builder call: setAttemptsIgnorableRule, [lengthOfMatch argumentAtIndex: 1], [builder get: attemptsIgnorableRule], nil];
 		
 		[builder return: [builder get: length]];
 	}
@@ -452,20 +470,20 @@
 -(void)leaveLiteralRule:(HammerLiteralRuleRef)rule {
 	NSString *name = [self nameForRule: rule];
 	
-	LLVMFunction *stringContainsStringAtIndexFunction = [module declareExternalFunctionWithName: @"HammerLiteralRuleStringContainsStringAtIndex" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, context.untypedPointerType, context.integerType, nil]];
-	LLVMFunction *parserGetInputLengthFunction = [module declareExternalFunctionWithName: @"HammerParserGetInputLength" type: [LLVMType functionType: context.integerType, context.untypedPointerType, nil]];
+	LLVMFunction *stringContainsStringAtIndexFunction = [module externalFunctionWithName: @"HammerLiteralRuleStringContainsStringAtIndex" type: [LLVMType functionType: context.int1Type, context.untypedPointerType, context.untypedPointerType, context.integerType, nil]];
+	LLVMFunction *parserGetInputLengthFunction = [module externalFunctionWithName: @"HammerParserGetInputLength" type: [LLVMType functionType: context.integerType, context.untypedPointerType, nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
 		[builder return: [builder condition: [builder and:
-				[builder unsignedLessOrEqual: [builder add: [lengthOfMatch parameterAtIndex: 0], [context constantUnsignedInteger: HammerLiteralRuleGetLiteral(rule).length]], [builder call: parserGetInputLengthFunction, [lengthOfMatch parameterAtIndex: 1], nil]],
+				[builder unsignedLessOrEqual: [builder add: [lengthOfMatch argumentAtIndex: 0], [context constantUnsignedInteger: HammerLiteralRuleGetLiteral(rule).length]], [builder call: parserGetInputLengthFunction, [lengthOfMatch argumentAtIndex: 1], nil]],
 				[builder call: stringContainsStringAtIndexFunction,
-					[builder call: [self parserGetInputStringFunction], [lengthOfMatch parameterAtIndex: 1], nil],
+					[builder call: [self parserGetInputStringFunction], [lengthOfMatch argumentAtIndex: 1], nil],
 					[context constantUntypedPointer: HammerLiteralRuleGetLiteral(rule)],
-					[lengthOfMatch parameterAtIndex: 0],
+					[lengthOfMatch argumentAtIndex: 0],
 				nil]
 			]
 			then: [context constantUnsignedInteger: HammerLiteralRuleGetLiteral(rule).length]
@@ -480,12 +498,12 @@
 -(void)leaveLookaheadRule:(HammerLookaheadRuleRef)rule withVisitedSubrule:(HammerBuiltRuleFunctions *)subrule {
 	NSString *name = [self nameForRule: rule];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
-		[builder return: [builder condition: [builder notEqual: [builder call: subrule.lengthOfMatch, [lengthOfMatch parameterAtIndex: 0], [lengthOfMatch parameterAtIndex: 1], nil], [context constantUnsignedInteger: NSNotFound]]
+		[builder return: [builder condition: [builder notEqual: [builder call: subrule.lengthOfMatch, [lengthOfMatch argumentAtIndex: 0], [lengthOfMatch argumentAtIndex: 1], nil], [context constantUnsignedInteger: NSNotFound]]
 			then: [context constantUnsignedInteger: HammerLookaheadRuleGetNegative(rule)? NSNotFound : 0]
 			else: [context constantUnsignedInteger: HammerLookaheadRuleGetNegative(rule)? 0 : NSNotFound]
 		]];
@@ -498,25 +516,25 @@
 	NSString *name = [self nameForRule: rule];
 	
 	LLVMFunction
-		*pushMatchContext = [module declareExternalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
-		*popMatchContext = [module declareExternalFunctionWithName: @"HammerParserPopAndNestMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, [module typeNamed: @"HammerRule"], [module typeNamed: @"NSString"], [module typeNamed: @"NSRange"], nil]];
+		*pushMatchContext = [module externalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
+		*popMatchContext = [module externalFunctionWithName: @"HammerParserPopAndNestMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, [module typeNamed: @"HammerRule"], [module typeNamed: @"NSString"], [module typeNamed: @"NSRange"], nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
-		[builder call: pushMatchContext, [lengthOfMatch parameterAtIndex: 1], nil];
+		[builder call: pushMatchContext, [lengthOfMatch argumentAtIndex: 1], nil];
 		
 		LLVMValue
 			*length = [builder allocateLocal: @"length" type: [module typeNamed: @"NSUInteger"]],
 			*range = [builder allocateLocal: @"range" type: [module typeNamed: @"NSRange"]];
 		
-		[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch parameterAtIndex: 0], [lengthOfMatch parameterAtIndex: 1], nil]];
-		[builder setElements: range, [lengthOfMatch parameterAtIndex: 0], [builder get: length], nil];
+		[builder set: length, [builder call: subrule.lengthOfMatch, [lengthOfMatch argumentAtIndex: 0], [lengthOfMatch argumentAtIndex: 1], nil]];
+		[builder setElements: range, [lengthOfMatch argumentAtIndex: 0], [builder get: length], nil];
 		
 		[builder call: popMatchContext,
-			[lengthOfMatch parameterAtIndex: 1],
+			[lengthOfMatch argumentAtIndex: 1],
 			[builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]],
 			[context constantUntypedPointer: rule],
 			[context constantUntypedPointer: HammerNamedRuleGetName(rule)],
@@ -533,28 +551,28 @@
 	NSString *name = [self nameForRule: rule];
 	
 	LLVMFunction
-		*lengthOfMatchFunctionForReference = [module declareExternalFunctionWithName: @"HammerCompiledRuleLengthOfMatchFunctionForReference" type: [LLVMType functionType: [LLVMType pointerTypeToType: [module typeNamed: @"HammerRuleLengthOfMatchFunction"]], [module typeNamed: @"HammerParser"], [module typeNamed: @"NSString"], nil]],
-		*pushMatchContext = [module declareExternalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
-		*popMatchContext = [module declareExternalFunctionWithName: @"HammerParserPopAndNestMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, [module typeNamed: @"HammerRule"], [module typeNamed: @"NSString"], [module typeNamed: @"NSRange"], nil]];
+		*lengthOfMatchFunctionForReference = [module externalFunctionWithName: @"HammerCompiledRuleLengthOfMatchFunctionForReference" type: [LLVMType functionType: [LLVMType pointerTypeToType: [module typeNamed: @"HammerRuleLengthOfMatchFunction"]], [module typeNamed: @"HammerParser"], [module typeNamed: @"NSString"], nil]],
+		*pushMatchContext = [module externalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
+		*popMatchContext = [module externalFunctionWithName: @"HammerParserPopAndNestMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, [module typeNamed: @"HammerRule"], [module typeNamed: @"NSString"], [module typeNamed: @"NSRange"], nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
-		[builder call: pushMatchContext, [lengthOfMatch parameterAtIndex: 1], nil];
+		[builder call: pushMatchContext, [lengthOfMatch argumentAtIndex: 1], nil];
 		
-		LLVMFunction *subruleLengthOfMatch = (LLVMFunction *)[builder call: lengthOfMatchFunctionForReference, [lengthOfMatch parameterAtIndex: 1], [context constantUntypedPointer: HammerReferenceRuleGetReference(rule)], nil];
+		LLVMFunction *subruleLengthOfMatch = (LLVMFunction *)[builder call: lengthOfMatchFunctionForReference, [lengthOfMatch argumentAtIndex: 1], [context constantUntypedPointer: HammerReferenceRuleGetReference(rule)], nil];
 		
 		LLVMValue
 			*length = [builder allocateLocal: @"length" type: [module typeNamed: @"NSUInteger"]],
 			*range = [builder allocateLocal: @"range" type: [module typeNamed: @"NSRange"]];
 			
-		[builder set: length, [builder call: subruleLengthOfMatch, [lengthOfMatch parameterAtIndex: 0], [lengthOfMatch parameterAtIndex: 1], nil]];
-		[builder setElements: range, [lengthOfMatch parameterAtIndex: 0], [builder get: length], nil];
+		[builder set: length, [builder call: subruleLengthOfMatch, [lengthOfMatch argumentAtIndex: 0], [lengthOfMatch argumentAtIndex: 1], nil]];
+		[builder setElements: range, [lengthOfMatch argumentAtIndex: 0], [builder get: length], nil];
 		
 		[builder call: popMatchContext,
-			[lengthOfMatch parameterAtIndex: 1],
+			[lengthOfMatch argumentAtIndex: 1],
 			[builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]],
 			[context constantUntypedPointer: rule],
 			[context constantUntypedPointer: HammerReferenceRuleGetReference(rule)],
@@ -571,15 +589,15 @@
 	NSString *name = [self nameForRule: rule];
 	
 	LLVMFunction
-		*pushMatchContext = [module declareExternalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
-		*popMatchContext = [module declareExternalFunctionWithName: @"HammerParserPopAndPassUpMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, nil]];
+		*pushMatchContext = [module externalFunctionWithName: @"HammerParserPushMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], nil]],
+		*popMatchContext = [module externalFunctionWithName: @"HammerParserPopAndPassUpMatchContext" type: [LLVMType functionType: context.voidType, [module typeNamed: @"HammerParser"], context.int1Type, nil]];
 	
-	LLVMFunction *lengthOfMatch = [module functionWithName: name];
+	LLVMFunction *lengthOfMatch = [module functionNamed: name];
 	if(!lengthOfMatch) {
 		lengthOfMatch = [module functionWithName: name typeName: @"HammerRuleLengthOfMatchFunction"];
 		[builder positionAtEndOfFunction: lengthOfMatch];
 		
-		[builder call: pushMatchContext, [lengthOfMatch parameterAtIndex: 1], nil];
+		[builder call: pushMatchContext, [lengthOfMatch argumentAtIndex: 1], nil];
 		
 		LLVMValue
 			*length = [builder allocateLocal: @"length" type: [module typeNamed: @"NSUInteger"]],
@@ -609,11 +627,11 @@
 		[builder positionAtEndOfBlock: subruleTestBlock]; {
 			[builder set: count, [builder add: [builder get: count], [context constantUnsignedInt64: 1]]];
 			
-			[builder if: [builder call: subrule.rangeOfMatch, subrange, [builder add: [lengthOfMatch parameterAtIndex: 0], [builder get: length]], [lengthOfMatch parameterAtIndex: 1], nil] then: subruleMatchedBlock else: returnBlock];
+			[builder if: [builder call: subrule.rangeOfMatch, subrange, [builder add: [lengthOfMatch argumentAtIndex: 0], [builder get: length]], [lengthOfMatch argumentAtIndex: 1], nil] then: subruleMatchedBlock else: returnBlock];
 		}
 		
 		[builder positionAtEndOfBlock: subruleMatchedBlock]; {
-			[builder set: length, [builder subtract: [builder add: [builder getElement: subrange atIndex: 0], [builder getElement: subrange atIndex: 1]], [lengthOfMatch parameterAtIndex: 0]]];
+			[builder set: length, [builder subtract: [builder add: [builder getElement: subrange atIndex: 0], [builder getElement: subrange atIndex: 1]], [lengthOfMatch argumentAtIndex: 0]]];
 			
 			[builder jumpToBlock: loopBlock];
 		}
@@ -628,7 +646,7 @@
 				else: [context constantUnsignedInteger: NSNotFound]
 			]];
 			
-			[builder call: popMatchContext, [lengthOfMatch parameterAtIndex: 1], [builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]], nil];
+			[builder call: popMatchContext, [lengthOfMatch argumentAtIndex: 1], [builder notEqual: [builder get: length], [context constantUnsignedInteger: NSNotFound]], nil];
 			
 			[builder return: [builder get: length]];
 		}

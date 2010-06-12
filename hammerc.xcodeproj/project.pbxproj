@@ -26,8 +26,6 @@
 		D4551E54113F5FEF0086F21C /* hammerc.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E51113F5FEF0086F21C /* hammerc.m */; };
 		D4551E82113F85830086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
 		D4551E85113F858B0086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
-		D4551E9A113F85CA0086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
-		D4551E9B113F85CC0086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
 		D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EBA113F88300086F21C /* bootstrap-hammerc.m */; };
 		D4551EBE113F88450086F21C /* HammerCompiledRule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E49113F5FC80086F21C /* HammerCompiledRule.m */; };
 		D4551EBF113F88450086F21C /* HammerRuleCompiler.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */; };
@@ -38,26 +36,30 @@
 		D4551EE7113F88700086F21C /* HammerCharacterRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EC9113F88700086F21C /* HammerCharacterRuleTests.m */; };
 		D4551EE8113F88700086F21C /* HammerCharacterSetRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */; };
 		D4551EE9113F88700086F21C /* HammerConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */; };
-		D4551EEA113F88700086F21C /* HammerContainerRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */; };
 		D4551EEB113F88700086F21C /* HammerLiteralConcatenationRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */; };
 		D4551EEC113F88700086F21C /* HammerLiteralRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED2113F88700086F21C /* HammerLiteralRuleTests.m */; };
 		D4551EED113F88700086F21C /* HammerLookaheadRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */; };
 		D4551EEE113F88700086F21C /* HammerNamedRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */; };
-		D4551EEF113F88700086F21C /* HammerParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED7113F88700086F21C /* HammerParserTests.m */; };
 		D4551EF0113F88700086F21C /* HammerReferenceRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */; };
 		D4551EF1113F88700086F21C /* HammerRepetitionRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDB113F88700086F21C /* HammerRepetitionRuleTests.m */; };
 		D4551EF2113F88700086F21C /* HammerRulePrinterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */; };
 		D4551EF3113F88700086F21C /* HammerRuleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EDE113F88700086F21C /* HammerRuleTests.m */; };
-		D4551EF4113F88700086F21C /* HammerTestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EE0113F88700086F21C /* HammerTestParser.m */; };
 		D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */; };
 		D4551EF8113F88A00086F21C /* Hammer.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EF7113F88A00086F21C /* Hammer.grammar */; };
-		D4551EFB113F88B80086F21C /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E95113F85C20086F21C /* libAuspicion.a */; };
 		D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
 		D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
 		D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
 		D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
 		D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
 		D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B24BC11B25720007CBBB4 /* RXAssertions.m */; };
+		D4D74F1511C38023002FF2F1 /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */; };
+		D4D74F1611C38031002FF2F1 /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */; };
+		D4D74F1711C38034002FF2F1 /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */; };
+		D4D74F2411C3817B002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
+		D4D74F2511C38195002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
+		D4D74F2611C38196002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
+		D4D74F3011C38209002FF2F1 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
+		D4D74F3111C3820E002FF2F1 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,47 +91,12 @@
 			remoteGlobalIDString = D404EB4610F5791C007612E9;
 			remoteInfo = "Measure Performance";
 		};
-		D4551E94113F85C20086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = "Auspicion (Static Library)";
-		};
-		D4551E96113F85C20086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D407954F10EB27140061CF6C;
-			remoteInfo = "Auspicion (Framework)";
-		};
-		D4551E98113F85C20086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90;
-			remoteInfo = AuspicionLLVM;
-		};
 		D4551E9C113F85D70086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4551E6E113F85780086F21C /* Hammer.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D4041AB0113BB80D005F156E;
 			remoteInfo = "Hammer (Static Library)";
-		};
-		D4551E9E113F85DA0086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "Auspicion (Static Library)";
-		};
-		D4551EFD113F88CA0086F21C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4551EFF113F88CA0086F21C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -142,29 +109,64 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC046055464E500DB518D /* libPolymorph.a */;
+			remoteGlobalIDString = D2AAC046055464E500DB518D;
 			remoteInfo = Polymorph;
 		};
 		D48B24E311B25721007CBBB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4AB04351180335A0048BBA1 /* Tests.octest */;
+			remoteGlobalIDString = D4AB04351180335A0048BBA1;
 			remoteInfo = Tests;
 		};
 		D48B24EA11B25721007CBBB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libRXAssertions.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = RXAssertions;
 		};
 		D48B24EC11B25721007CBBB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D442A488106FD94900944F07 /* Tests.octest */;
+			remoteGlobalIDString = D442A488106FD94900944F07;
 			remoteInfo = Tests;
+		};
+		D4D74F0B11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libAuspicion.a */;
+			remoteInfo = "Auspicion (Static Library)";
+		};
+		D4D74F0D11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90 /* libAuspicionLLVM.a */;
+			remoteInfo = AuspicionLLVM;
+		};
+		D4D74F0F11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4CF603311C32F8000C9DD15 /* Tests.octest */;
+			remoteInfo = Tests;
+		};
+		D4D74F1111C38010002FF2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteInfo = "Auspicion (Static Library)";
+		};
+		D4D74F1311C3801B002FF2F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteInfo = "Auspicion (Static Library)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -205,7 +207,6 @@
 		D4551E51113F5FEF0086F21C /* hammerc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hammerc.m; sourceTree = "<group>"; };
 		D4551E52113F5FEF0086F21C /* hammerc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hammerc_Prefix.pch; sourceTree = "<group>"; };
 		D4551E6E113F85780086F21C /* Hammer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Hammer.xcodeproj; sourceTree = "<group>"; };
-		D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Auspicion.xcodeproj; sourceTree = "<group>"; };
 		D4551EBA113F88300086F21C /* bootstrap-hammerc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "bootstrap-hammerc.m"; sourceTree = "<group>"; };
 		D4551EC3113F88700086F21C /* digit.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digit.grammar; sourceTree = "<group>"; };
 		D4551EC4113F88700086F21C /* letter.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = letter.grammar; sourceTree = "<group>"; };
@@ -239,7 +240,7 @@
 		D4551EE0113F88700086F21C /* HammerTestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestParser.m; sourceTree = "<group>"; };
 		D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestRuleVisitor.h; sourceTree = "<group>"; };
 		D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestRuleVisitor.m; sourceTree = "<group>"; };
-		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hammer.grammar; sourceTree = "<group>"; };
+		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hammer.grammar; path = "../Other Sources/Hammer.grammar"; sourceTree = "<group>"; };
 		D48B23E711B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMModule+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
 		D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLVMModule+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
 		D48B23E911B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMType+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
@@ -253,6 +254,9 @@
 		D48B24BB11B25720007CBBB4 /* RXAssertions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAssertions.h; sourceTree = "<group>"; };
 		D48B24BC11B25720007CBBB4 /* RXAssertions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAssertions.m; sourceTree = "<group>"; };
 		D48B24BE11B25720007CBBB4 /* RXAssertions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RXAssertions.xcodeproj; sourceTree = "<group>"; };
+		D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Auspicion.xcodeproj; sourceTree = "<group>"; };
+		D4D74F2211C3817B002FF2F1 /* NSObject+UniqueFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+UniqueFactory.h"; path = "Classes/NSObject+UniqueFactory.h"; sourceTree = "<group>"; };
+		D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+UniqueFactory.m"; path = "Classes/NSObject+UniqueFactory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,7 +264,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4551E9A113F85CA0086F21C /* libAuspicion.a in Frameworks */,
+				D4D74F1611C38031002FF2F1 /* libAuspicion.a in Frameworks */,
 				D4551E82113F85830086F21C /* libHammer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4551E9B113F85CC0086F21C /* libAuspicion.a in Frameworks */,
+				D4D74F1711C38034002FF2F1 /* libAuspicion.a in Frameworks */,
 				D4551E85113F858B0086F21C /* libHammer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4551EFB113F88B80086F21C /* libAuspicion.a in Frameworks */,
+				D4D74F1511C38023002FF2F1 /* libAuspicion.a in Frameworks */,
 				D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -389,7 +393,9 @@
 		D4551E6D113F855E0086F21C /* Auspicion */ = {
 			isa = PBXGroup;
 			children = (
-				D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */,
+				D4D74F2211C3817B002FF2F1 /* NSObject+UniqueFactory.h */,
+				D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */,
+				D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */,
 			);
 			path = Auspicion;
 			sourceTree = "<group>";
@@ -400,16 +406,6 @@
 				D4551E7B113F85780086F21C /* libHammer.a */,
 				D4551E7F113F85780086F21C /* Tests.octest */,
 				D4551E81113F85780086F21C /* Measure Performance */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D4551E8C113F85C20086F21C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D4551E95113F85C20086F21C /* libAuspicion.a */,
-				D4551E97113F85C20086F21C /* Auspicion.framework */,
-				D4551E99113F85C20086F21C /* libAuspicionLLVM.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -538,6 +534,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D4D74F0611C37FFC002FF2F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */,
+				D4D74F0E11C37FFC002FF2F1 /* libAuspicionLLVM.a */,
+				D4D74F1011C37FFC002FF2F1 /* Tests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -571,7 +577,7 @@
 			);
 			dependencies = (
 				D4551E9D113F85D70086F21C /* PBXTargetDependency */,
-				D4551E9F113F85DA0086F21C /* PBXTargetDependency */,
+				D4D74F1211C38010002FF2F1 /* PBXTargetDependency */,
 			);
 			name = "bootstrap-hammerc";
 			productName = "bootstrap-hammerc";
@@ -590,8 +596,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				D4551EFE113F88CA0086F21C /* PBXTargetDependency */,
 				D4551F00113F88CA0086F21C /* PBXTargetDependency */,
+				D4D74F1411C3801B002FF2F1 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -610,8 +616,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = D4551E8C113F85C20086F21C /* Products */;
-					ProjectRef = D4551E8B113F85C20086F21C /* Auspicion.xcodeproj */;
+					ProductGroup = D4D74F0611C37FFC002FF2F1 /* Products */;
+					ProjectRef = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 				},
 				{
 					ProductGroup = D4551E6F113F85780086F21C /* Products */;
@@ -657,27 +663,6 @@
 			remoteRef = D4551E80113F85780086F21C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D4551E95113F85C20086F21C /* libAuspicion.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAuspicion.a;
-			remoteRef = D4551E94113F85C20086F21C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4551E97113F85C20086F21C /* Auspicion.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Auspicion.framework;
-			remoteRef = D4551E96113F85C20086F21C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4551E99113F85C20086F21C /* libAuspicionLLVM.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAuspicionLLVM.a;
-			remoteRef = D4551E98113F85C20086F21C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		D48B24E211B25721007CBBB4 /* libPolymorph.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -704,6 +689,27 @@
 			fileType = wrapper.cfbundle;
 			path = Tests.octest;
 			remoteRef = D48B24EC11B25721007CBBB4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAuspicion.a;
+			remoteRef = D4D74F0B11C37FFC002FF2F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4D74F0E11C37FFC002FF2F1 /* libAuspicionLLVM.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAuspicionLLVM.a;
+			remoteRef = D4D74F0D11C37FFC002FF2F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4D74F1011C37FFC002FF2F1 /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = D4D74F0F11C37FFC002FF2F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -748,6 +754,7 @@
 				D4551E54113F5FEF0086F21C /* hammerc.m in Sources */,
 				D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
 				D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
+				D4D74F2611C38196002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -760,6 +767,7 @@
 				D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */,
 				D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
 				D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
+				D4D74F2511C38195002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,19 +793,19 @@
 				D4551EE7113F88700086F21C /* HammerCharacterRuleTests.m in Sources */,
 				D4551EE8113F88700086F21C /* HammerCharacterSetRuleTests.m in Sources */,
 				D4551EE9113F88700086F21C /* HammerConcatenationRuleTests.m in Sources */,
-				D4551EEA113F88700086F21C /* HammerContainerRuleTests.m in Sources */,
 				D4551EEB113F88700086F21C /* HammerLiteralConcatenationRuleTests.m in Sources */,
 				D4551EEC113F88700086F21C /* HammerLiteralRuleTests.m in Sources */,
 				D4551EED113F88700086F21C /* HammerLookaheadRuleTests.m in Sources */,
 				D4551EEE113F88700086F21C /* HammerNamedRuleTests.m in Sources */,
-				D4551EEF113F88700086F21C /* HammerParserTests.m in Sources */,
 				D4551EF0113F88700086F21C /* HammerReferenceRuleTests.m in Sources */,
 				D4551EF1113F88700086F21C /* HammerRepetitionRuleTests.m in Sources */,
 				D4551EF2113F88700086F21C /* HammerRulePrinterTests.m in Sources */,
 				D4551EF3113F88700086F21C /* HammerRuleTests.m in Sources */,
-				D4551EF4113F88700086F21C /* HammerTestParser.m in Sources */,
 				D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */,
 				D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */,
+				D4D74F2411C3817B002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
+				D4D74F3011C38209002FF2F1 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
+				D4D74F3111C3820E002FF2F1 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,20 +822,20 @@
 			name = "Hammer (Static Library)";
 			targetProxy = D4551E9C113F85D70086F21C /* PBXContainerItemProxy */;
 		};
-		D4551E9F113F85DA0086F21C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Auspicion (Static Library)";
-			targetProxy = D4551E9E113F85DA0086F21C /* PBXContainerItemProxy */;
-		};
-		D4551EFE113F88CA0086F21C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Auspicion (Static Library)";
-			targetProxy = D4551EFD113F88CA0086F21C /* PBXContainerItemProxy */;
-		};
 		D4551F00113F88CA0086F21C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Hammer (Static Library)";
 			targetProxy = D4551EFF113F88CA0086F21C /* PBXContainerItemProxy */;
+		};
+		D4D74F1211C38010002FF2F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Auspicion (Static Library)";
+			targetProxy = D4D74F1111C38010002FF2F1 /* PBXContainerItemProxy */;
+		};
+		D4D74F1411C3801B002FF2F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Auspicion (Static Library)";
+			targetProxy = D4D74F1311C3801B002FF2F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -845,6 +853,7 @@
 					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-lstdc++",
@@ -856,19 +865,15 @@
 		1DEB927608733DD40010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-lstdc++",
@@ -880,7 +885,6 @@
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -891,8 +895,9 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = External/Include/;
+				HEADER_SEARCH_PATHS = "External/Include/**";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = macosx10.6;
 			};
@@ -903,10 +908,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_GC = supported;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Other Sources/hammerc_Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "External/Include/**";
+				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
@@ -924,6 +934,7 @@
 					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-lstdc++",
@@ -936,47 +947,40 @@
 		D4551DFD113E48A90086F21C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/Hammer/External/Polymorph/build/Debug\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-lstdc++",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = "bootstrap-hammerc";
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
 		D4551E2A113F5F6D0086F21C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-DHAMMERC_UNIT_TESTS";
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-framework",
@@ -985,7 +989,6 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
-				USER_HEADER_SEARCH_PATHS = External/Include/Hammer/;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -993,19 +996,16 @@
 		D4551E2B113F5F6D0086F21C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
-				HEADER_SEARCH_PATHS = External/Include/;
 				INFOPLIST_FILE = "Resources/Tests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_CFLAGS = "-DHAMMERC_UNIT_TESTS";
 				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
 					"-framework",
 					Foundation,
 					"-framework",
@@ -1014,9 +1014,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
-				USER_HEADER_SEARCH_PATHS = External/Include/Hammer/;
 				WRAPPER_EXTENSION = octest;
-				ZERO_LINK = NO;
 			};
 			name = Release;
 		};

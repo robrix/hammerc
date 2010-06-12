@@ -18,6 +18,8 @@
 	NSMutableArray *builtFunctionsStack;
 }
 
++(id)compiler;
+
 -(HammerRuleRef)compileRule:(HammerRuleRef)rule;
 
 @end

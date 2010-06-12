@@ -8,6 +8,6 @@
 
 @interface LLVMModule (LLVMModuleRuntimeTypeEncodings)
 
--(void)setObjCType:(const char *)type forName:(NSString *)name;
+-(LLVMType *)setObjCType:(const char *)type forName:(NSString *)name;
 
 @end

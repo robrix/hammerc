@@ -10,12 +10,12 @@
 
 @implementation HammerCompiledLookaheadRuleTests
 
--(HammerRule *)positiveRule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.positiveRule];
+-(HammerLookaheadRuleRef)positiveRule {
+	return [[HammerRuleCompiler compiler] compileRule: super.positiveRule];
 }
 
--(HammerRule *)negativeRule {
-	return [[[[HammerRuleCompiler alloc] init] autorelease] compileRule: super.negativeRule];
+-(HammerLookaheadRuleRef)negativeRule {
+	return [[HammerRuleCompiler compiler] compileRule: super.negativeRule];
 }
 
 @end

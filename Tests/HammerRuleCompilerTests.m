@@ -24,12 +24,12 @@
 // rule functionality is tested in HammerCompiled*RuleTests suites
 
 -(void)testCompilesCharacterRules {
-	HammerRule *compiledRule = [compiler compileRule: [HammerCharacterRule rule]];
+	HammerRuleRef compiledRule = [compiler compileRule: HammerCharacterRuleCreate()];
 	RXAssertNotNil(compiledRule);
 }
 
 -(void)testCompilesLiteralRules {
-	HammerRule *compiledRule = [compiler compileRule: [HammerLiteralRule ruleWithLiteral: @"literal"]];
+	HammerRuleRef compiledRule = [compiler compileRule: HammerLiteralRuleCreate(@"literal")];
 	RXAssertNotNil(compiledRule);
 }
 

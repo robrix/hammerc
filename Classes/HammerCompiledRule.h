@@ -27,23 +27,3 @@ HammerRuleRef HammerCompiledRuleGetSourceRule(HammerCompiledRuleRef self);
 
 HammerCompiledRuleLengthOfMatchFunction HammerCompiledRuleGetLengthOfMatchFunction(HammerCompiledRuleRef self);
 HammerCompiledRuleRangeOfMatchFunction HammerCompiledRuleGetRangeOfMatchFunction(HammerCompiledRuleRef self);
-
-// @interface HammerCompiledRule : HammerRule {
-// 	HammerRuleRef original;
-// 	HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
-// 	HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
-// }
-// 
-// +(id)ruleWithOriginalRule:(HammerRuleRef)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
-// -(id)initWithOriginalRule:(HammerRuleRef)_original compiler:(LLVMCompiler *)_compiler functions:(HammerBuiltRuleFunctions *)_functions;
-// 
-// @property (nonatomic, readonly) HammerRuleRef original;
-// 
-// @property (nonatomic, readonly) HammerCompiledRuleLengthOfMatchFunction lengthOfMatchFunction;
-// // @property (nonatomic, readonly) HammerCompiledRuleRangeOfMatchFunction rangeOfMatchFunction;
-// 
-// @end
-// 
-// 
-// HammerCompiledRuleLengthOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParserState *parser, NSString *reference);
-// // HammerCompiledRuleRangeOfMatchFunction HammerCompiledRuleLengthOfMatchFunctionForReference(HammerParser *parser, NSString *reference);
