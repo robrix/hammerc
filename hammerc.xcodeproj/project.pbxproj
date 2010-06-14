@@ -63,6 +63,9 @@
 		D4D750E211C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
 		D4D750E311C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
 		D4D750FF11C3D8E8002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
+		D4D753B211C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D753B111C670DC002FF2F1 /* HammerBlockRuleVisitor.m */; };
+		D4D753B311C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D753B111C670DC002FF2F1 /* HammerBlockRuleVisitor.m */; };
+		D4D753B411C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D753B111C670DC002FF2F1 /* HammerBlockRuleVisitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,6 +265,8 @@
 		D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+UniqueFactory.m"; path = "Classes/NSObject+UniqueFactory.m"; sourceTree = "<group>"; };
 		D4D750E011C3BE90002FF2F1 /* HammerRuleCompilerVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRuleCompilerVisitor.h; sourceTree = "<group>"; };
 		D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleCompilerVisitor.m; sourceTree = "<group>"; };
+		D4D753B011C670DC002FF2F1 /* HammerBlockRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerBlockRuleVisitor.h; sourceTree = "<group>"; };
+		D4D753B111C670DC002FF2F1 /* HammerBlockRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerBlockRuleVisitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +318,8 @@
 		08FB7795FE84155DC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D4D753B011C670DC002FF2F1 /* HammerBlockRuleVisitor.h */,
+				D4D753B111C670DC002FF2F1 /* HammerBlockRuleVisitor.m */,
 				D4551E48113F5FC80086F21C /* HammerCompiledRule.h */,
 				D4551E49113F5FC80086F21C /* HammerCompiledRule.m */,
 				D4551E4A113F5FC80086F21C /* HammerRuleCompiler.h */,
@@ -763,6 +770,7 @@
 				D48B23EE11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */,
 				D4D74F2611C38196002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
 				D4D750E311C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
+				D4D753B311C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +785,7 @@
 				D48B23EC11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */,
 				D4D74F2511C38195002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
 				D4D750E211C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
+				D4D753B211C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,6 +825,7 @@
 				D4D74F3011C38209002FF2F1 /* ARXModule+RuntimeTypeEncodings.m in Sources */,
 				D4D74F3111C3820E002FF2F1 /* ARXType+RuntimeTypeEncodings.m in Sources */,
 				D4D750FF11C3D8E8002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
+				D4D753B411C670DC002FF2F1 /* HammerBlockRuleVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

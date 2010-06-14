@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class HammerRuleCompiler, HammerRulePrinter;
+@class HammerRuleCompiler;
 
 @interface HammerRuleCompilerVisitor : NSObject <HammerRuleVisitor> {
 	HammerRuleCompiler *compiler;

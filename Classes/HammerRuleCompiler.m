@@ -2,6 +2,7 @@
 // Created by Rob Rix on 2009-12-06
 // Copyright 2009 Monochrome Industries
 
+#import "HammerBlockRuleVisitor.h"
 #import "HammerCompiledRule.h"
 #import "HammerRuleCompiler.h"
 #import "HammerRuleCompilerVisitor.h"
@@ -75,7 +76,27 @@
 
 -(HammerRuleRef)compileRule:(HammerRuleRef)rule {
 	HammerBuiltRuleFunctions *builtFunctions = nil;
+	ARXFunction *initializer = nil;
 	@try {
+		HammerBlockRuleVisitor *ruleVisitor = [[HammerBlockRuleVisitor alloc] init];
+		
+		[ruleVisitor visitRule: rule withVisitBlock: ^(HammerRuleRef rule, NSString *shortName) {
+			SEL declarator = NSSelectorFromString([NSString stringWithFormat: @"declareGlobalDataFor%@:", shortName]);
+			if([self respondsToSelector: declarator]) {
+				[self performSelector: declarator withObject: rule];
+			}
+		}];
+		
+		initializer = [module functionWithName: [NSString stringWithFormat: @"%@ initialize", [self nameForRule: rule]] type: [ARXType functionType: context.voidType, nil] definition: ^(ARXFunctionBuilder *function){
+			[ruleVisitor visitRule: rule withVisitBlock: ^(HammerRuleRef rule, NSString *shortName) {
+				SEL selector = NSSelectorFromString([NSString stringWithFormat: @"initializeDataFor%@:", shortName]);
+				if([self respondsToSelector: selector]) {
+					[self performSelector: selector withObject: rule];
+				}
+			}];
+			[function return];
+		}];
+		
 		HammerRuleCompilerVisitor *visitor = [[HammerRuleCompilerVisitor alloc] initWithCompiler: self];
 		builtFunctions = HammerRuleAcceptVisitor(rule, visitor);
 	}
@@ -86,7 +107,7 @@
 	
 	NSError *error = nil;
 	if(![module verifyWithError: &error]) {
-		// LLVMDumpModule([module moduleRef]);
+		LLVMDumpModule([module moduleRef]);
 		NSLog(@"Error in module: %@", error.localizedDescription);
 		return nil;
 	}
@@ -102,7 +123,8 @@
 	// [optimizer addCFGSimplificationPass];
 	
 	[optimizer optimizeModule: module];
-	
+	void (*initialize)() = [compiler compiledFunction: initializer];
+	initialize();
 	HammerCompiledRuleRef compiledRule = HammerCompiledRuleCreate(rule, [compiler compiledFunction: builtFunctions.lengthOfMatch], [compiler compiledFunction: builtFunctions.rangeOfMatch]);
 	
 	return compiledRule;
@@ -212,16 +234,18 @@
 }
 
 
+-(void)declareGlobalDataForCharacterSetRule:(HammerCharacterSetRuleRef)rule {
+	[module declareGlobalOfType: [module typeNamed: @"CFCharacterSetRef"] forName: [self nameForRule: rule]];
+}
+
 -(void)initializeDataForCharacterSetRule:(HammerCharacterSetRuleRef)rule {
 	// fixme: constant pointers are only viable for JIT
 	// fixme: actually call the initializers from a function
-	[module initializeGlobal: [context constantPointer: (void *)HammerCharacterSetRuleGetCharacterSet(rule) ofType: [module typeNamed: @"CFCharacterSetRef"]] forName: [self nameForRule: rule]];
+	[module setGlobal: [context constantPointer: (void *)HammerCharacterSetRuleGetCharacterSet(rule) ofType: [module typeNamed: @"CFCharacterSetRef"]] forName: [self nameForRule: rule]];
 }
 
 -(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForCharacterSetRule:(HammerCharacterSetRuleRef)rule {
 	return [^(ARXFunctionBuilder *function) {
-		[self initializeDataForCharacterSetRule: rule];
-		
 		ARXValue *sequence = [[function structureArgumentNamed: @"state"] elementNamed: @"sequence"];
 		[function return: [[[[function argumentNamed: @"initial"] isUnsignedLessThan: [self.sequenceGetLengthFunction call: sequence]]
 			and: [self.characterIsMemberFunction call: [module globalNamed: [self nameForRule: rule]], [self.getCharacterAtIndexFunction call: [self.sequenceGetStringFunction call: sequence], [function argumentNamed: @"initial"], nil], nil]
@@ -239,22 +263,23 @@
 	return [module externalFunctionWithName: @"HammerSequenceContainsSequenceAtIndex" type: [ARXType functionType: context.int1Type, [module typeNamed: @"HammerSequenceRef"], [module typeNamed: @"HammerSequenceRef"], [module typeNamed: @"HammerIndex"], nil]];
 }
 
+-(void)declareGlobalDataForLiteralRule:(HammerLiteralRuleRef)rule {
+	[module declareGlobalOfType: [module typeNamed: @"HammerSequenceRef"] forName: [self nameForRule: rule]];
+}
+
 -(void)initializeDataForLiteralRule:(HammerLiteralRuleRef)rule {
 	// fixme: constant pointers are only viable for JIT
 	// fixme: actually call the initializers from a function
-	[module initializeGlobal: [context constantPointer: (void *)HammerLiteralRuleGetSequence(rule) ofType: [module typeNamed: @"HammerSequenceRef"]] forName: [self nameForRule: rule]];
+	[module setGlobal: [context constantPointer: (void *)HammerLiteralRuleGetSequence(rule) ofType: [module typeNamed: @"HammerSequenceRef"]] forName: [self nameForRule: rule]];
 }
 
 -(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForLiteralRule:(HammerLiteralRuleRef)rule {
 	return [^(ARXFunctionBuilder *function) {
-		[self initializeDataForLiteralRule: rule];
-		
 		ARXValue *sequence = [[function structureArgumentNamed: @"state"] elementNamed: @"sequence"];
 		[function return: [[[self.sequenceContainsSequenceAtIndexFunction call: sequence, [module globalNamed: [self nameForRule: rule]], [function argumentNamed: @"initial"]] toBoolean]
 			select: [context constantUnsignedInteger: HammerSequenceGetLength(HammerLiteralRuleGetSequence(rule))]
 			   or: [context constantUnsignedInteger: NSNotFound]]];
 	} copy];
 }
-
 
 @end
