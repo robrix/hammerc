@@ -17,10 +17,6 @@
 	compiler = [[HammerRuleCompiler alloc] init];
 }
 
--(void)tearDown {
-	[compiler release];
-}
-
 // rule functionality is tested in HammerCompiled*RuleTests suites
 
 -(void)testCompilesCharacterRules {

@@ -24,7 +24,6 @@
 		[compiler compileRule: HammerCharacterRuleCreate()], @"any",
 		[compiler compileRule: HammerConcatenationRuleCreate(RXArray(HammerReferenceRuleCreate(@"any"), HammerReferenceRuleCreate(@"any"), NULL))], @"anyTwo",
 	NULL);
-	[compiler release];
 }
 
 @end

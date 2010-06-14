@@ -1,0 +1,1 @@
+../../../External/Auspicion/Classes/Type/ARXStructureType.h

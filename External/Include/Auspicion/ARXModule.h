@@ -1,0 +1,1 @@
+../../../External/Auspicion/Classes/ARXModule.h

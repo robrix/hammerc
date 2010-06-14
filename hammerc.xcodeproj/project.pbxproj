@@ -47,10 +47,10 @@
 		D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */; };
 		D4551EF8113F88A00086F21C /* Hammer.grammar in Resources */ = {isa = PBXBuildFile; fileRef = D4551EF7113F88A00086F21C /* Hammer.grammar */; };
 		D4551EFC113F88B80086F21C /* libHammer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4551E7B113F85780086F21C /* libHammer.a */; };
-		D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
-		D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
-		D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
-		D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
+		D48B23EB11B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m */; };
+		D48B23EC11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m */; };
+		D48B23ED11B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m */; };
+		D48B23EE11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m */; };
 		D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B24BC11B25720007CBBB4 /* RXAssertions.m */; };
 		D4D74F1511C38023002FF2F1 /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */; };
 		D4D74F1611C38031002FF2F1 /* libAuspicion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */; };
@@ -58,8 +58,11 @@
 		D4D74F2411C3817B002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
 		D4D74F2511C38195002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
 		D4D74F2611C38196002FF2F1 /* NSObject+UniqueFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */; };
-		D4D74F3011C38209002FF2F1 /* LLVMModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */; };
-		D4D74F3111C3820E002FF2F1 /* LLVMType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */; };
+		D4D74F3011C38209002FF2F1 /* ARXModule+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23E811B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m */; };
+		D4D74F3111C3820E002FF2F1 /* ARXType+RuntimeTypeEncodings.m in Sources */ = {isa = PBXBuildFile; fileRef = D48B23EA11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m */; };
+		D4D750E211C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
+		D4D750E311C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
+		D4D750FF11C3D8E8002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,35 +140,35 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libAuspicion.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4D74F0D11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90 /* libAuspicionLLVM.a */;
+			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90;
 			remoteInfo = AuspicionLLVM;
 		};
 		D4D74F0F11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D4CF603311C32F8000C9DD15 /* Tests.octest */;
+			remoteGlobalIDString = D4CF603311C32F8000C9DD15;
 			remoteInfo = Tests;
 		};
 		D4D74F1111C38010002FF2F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 		D4D74F1311C3801B002FF2F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Auspicion (Static Library) */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = "Auspicion (Static Library)";
 		};
 /* End PBXContainerItemProxy section */
@@ -241,10 +244,10 @@
 		D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestRuleVisitor.h; sourceTree = "<group>"; };
 		D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestRuleVisitor.m; sourceTree = "<group>"; };
 		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hammer.grammar; path = "../Other Sources/Hammer.grammar"; sourceTree = "<group>"; };
-		D48B23E711B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMModule+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
-		D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLVMModule+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
-		D48B23E911B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LLVMType+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
-		D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LLVMType+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
+		D48B23E711B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARXModule+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
+		D48B23E811B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARXModule+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
+		D48B23E911B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARXType+RuntimeTypeEncodings.h"; sourceTree = "<group>"; };
+		D48B23EA11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARXType+RuntimeTypeEncodings.m"; sourceTree = "<group>"; };
 		D48B247911B25720007CBBB4 /* RXAllocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAllocation.h; sourceTree = "<group>"; };
 		D48B247B11B25720007CBBB4 /* RXCoreFoundationIntegration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXCoreFoundationIntegration.h; sourceTree = "<group>"; };
 		D48B247D11B25720007CBBB4 /* RXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXObject.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 		D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Auspicion.xcodeproj; sourceTree = "<group>"; };
 		D4D74F2211C3817B002FF2F1 /* NSObject+UniqueFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+UniqueFactory.h"; path = "Classes/NSObject+UniqueFactory.h"; sourceTree = "<group>"; };
 		D4D74F2311C3817B002FF2F1 /* NSObject+UniqueFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+UniqueFactory.m"; path = "Classes/NSObject+UniqueFactory.m"; sourceTree = "<group>"; };
+		D4D750E011C3BE90002FF2F1 /* HammerRuleCompilerVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRuleCompilerVisitor.h; sourceTree = "<group>"; };
+		D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleCompilerVisitor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +317,8 @@
 				D4551E49113F5FC80086F21C /* HammerCompiledRule.m */,
 				D4551E4A113F5FC80086F21C /* HammerRuleCompiler.h */,
 				D4551E4B113F5FC80086F21C /* HammerRuleCompiler.m */,
+				D4D750E011C3BE90002FF2F1 /* HammerRuleCompilerVisitor.h */,
+				D4D750E111C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -468,10 +475,10 @@
 		D48B23E611B24D5E007CBBB4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				D48B23E711B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.h */,
-				D48B23E811B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m */,
-				D48B23E911B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.h */,
-				D48B23EA11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m */,
+				D48B23E711B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.h */,
+				D48B23E811B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m */,
+				D48B23E911B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.h */,
+				D48B23EA11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -752,9 +759,10 @@
 				D4551E4E113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
 				D4551E4F113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
 				D4551E54113F5FEF0086F21C /* hammerc.m in Sources */,
-				D48B23ED11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
-				D48B23EE11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
+				D48B23ED11B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m in Sources */,
+				D48B23EE11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */,
 				D4D74F2611C38196002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
+				D4D750E311C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,9 +773,10 @@
 				D4551E4C113F5FC80086F21C /* HammerCompiledRule.m in Sources */,
 				D4551E4D113F5FC80086F21C /* HammerRuleCompiler.m in Sources */,
 				D4551EBB113F88300086F21C /* bootstrap-hammerc.m in Sources */,
-				D48B23EB11B24D5E007CBBB4 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
-				D48B23EC11B24D5E007CBBB4 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
+				D48B23EB11B24D5E007CBBB4 /* ARXModule+RuntimeTypeEncodings.m in Sources */,
+				D48B23EC11B24D5E007CBBB4 /* ARXType+RuntimeTypeEncodings.m in Sources */,
 				D4D74F2511C38195002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
+				D4D750E211C3BE90002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,8 +813,9 @@
 				D4551EF5113F88700086F21C /* HammerTestRuleVisitor.m in Sources */,
 				D48B251D11B25AE5007CBBB4 /* RXAssertions.m in Sources */,
 				D4D74F2411C3817B002FF2F1 /* NSObject+UniqueFactory.m in Sources */,
-				D4D74F3011C38209002FF2F1 /* LLVMModule+RuntimeTypeEncodings.m in Sources */,
-				D4D74F3111C3820E002FF2F1 /* LLVMType+RuntimeTypeEncodings.m in Sources */,
+				D4D74F3011C38209002FF2F1 /* ARXModule+RuntimeTypeEncodings.m in Sources */,
+				D4D74F3111C3820E002FF2F1 /* ARXType+RuntimeTypeEncodings.m in Sources */,
+				D4D750FF11C3D8E8002FF2F1 /* HammerRuleCompilerVisitor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

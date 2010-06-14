@@ -4,15 +4,15 @@
 
 #import <Hammer/Hammer.h>
 
-@class LLVMCompiler, LLVMFunction;
+@class ARXCompiler, ARXFunction;
 
 @interface HammerBuiltRuleFunctions : NSObject {
-	LLVMFunction *lengthOfMatch;
-	LLVMFunction *rangeOfMatch;
+	ARXFunction *lengthOfMatch;
+	ARXFunction *rangeOfMatch;
 }
 
-@property (nonatomic, retain) LLVMFunction *lengthOfMatch;
-@property (nonatomic, retain) LLVMFunction *rangeOfMatch;
+@property (nonatomic, retain) ARXFunction *lengthOfMatch;
+@property (nonatomic, retain) ARXFunction *rangeOfMatch;
 
 @end
 

@@ -1,7 +1,16 @@
-- write a parser for `@encode()` directive strings.
-- provide JIT-compiled implementations of the match methods for rules, written in Auspicion. Use those in Hammer, and use them in hammerc as the components of the static compilation.
-	Is that even possible, i.e. resolving function calls and replacing them with static ones?
-- inline everything.
+Compiler:
+	- write a parser for `@encode()` directive strings. @done(2010-06-14)
+	- provide JIT-compiled implementations of the match methods for rules, written in Auspicion. Use those in Hammer, and use them in hammerc as the components of the static compilation.
+		Is that even possible, i.e. resolving function calls and replacing them with static ones?
+	- inline everything.
+	- compile the rule graph rather than just individual rules.
+	- replace reference rules with the (compiled) rules they reference.
+	- build functions for the clients to call:
+		- rule graph (parser) initialization
+			- calls -initializeDataFor<rule>: on each rule
+		- parse
+		- free
+			- frees the globals created in -initializeDataFor<rule>:.
 
 Tools:
 	- Xcode plugin with a build rule for .grammar files.

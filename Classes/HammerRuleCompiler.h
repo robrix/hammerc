@@ -3,22 +3,29 @@
 // Copyright 2009 Monochrome Industries
 
 #import <Foundation/Foundation.h>
-#import <Hammer/Hammer.h>
+#import "Hammer.h"
 
-@class LLVMBuilder, LLVMContext, LLVMModule, LLVMType;
+#import "ARXModule.h"
+
+@class ARXContext, ARXFunction;
 
 @interface HammerRuleCompiler : HammerRuleVisitor {
-	LLVMBuilder *builder;
-	LLVMContext *context;
-	
-	LLVMModule *module;
-	
+	ARXContext *context;
+	ARXModule *module;
 	HammerRulePrinter *printer;
-	
-	NSMutableArray *builtFunctionsStack;
 }
 
 +(id)compiler;
+
+@property (nonatomic, readonly) ARXModule *module;
+
+-(NSString *)nameForRule:(HammerRuleRef)rule;
+
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule;
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrule:(ARXFunction *)subrule;
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrules:(NSArray *)subrules;
+
+-(ARXModuleFunctionDefinitionBlock)rangeOfMatchSkippingIgnorableCharactersDefinitionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch;
 
 -(HammerRuleRef)compileRule:(HammerRuleRef)rule;
 

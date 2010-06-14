@@ -2,4 +2,4 @@
 
 A compiler for [Hammer](http://github.com/robrix/Hammer) using [Auspicion](http://github.com/robrix/Auspicion) for most of the heavy lifting.
 
-Not yet working as such, but [not without its perks](http://github.com/robrix/hammerc/blob/master/Categories/LLVMType%2BRuntimeTypeEncodings.m).
+Not yet working as such, but [not without its perks](http://github.com/robrix/hammerc/blob/master/Categories/ARXType%2BRuntimeTypeEncodings.m).

@@ -9,7 +9,7 @@
 #import "HammerRuleCompiler.h"
 
 int main(int argc, const char *argv[]) {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	// NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	HammerRuleGraphRef grammar = [HammerBuilder grammarRuleGraph];
 	HammerRuleCompiler *compiler = [[HammerRuleCompiler alloc] init];
@@ -22,6 +22,6 @@ int main(int argc, const char *argv[]) {
 	// then they should actually be assembled via llc?
 	// where does optimization come in?
 	
-	[pool drain];
+	// [pool drain];
 	return 0;
 }
