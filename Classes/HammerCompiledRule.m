@@ -14,7 +14,9 @@
 static struct HammerRuleType HammerCompiledRuleType;
 
 typedef struct HammerCompiledRule {
-	HammerRuleRef sourceRule;
+	RX_FIELDS_FROM(HammerRule, HammerRuleType);
+	
+	__strong HammerRuleRef sourceRule;
 	HammerCompiledRuleLengthOfMatchFunction lengthOfMatch;
 	HammerCompiledRuleRangeOfMatchFunction rangeOfMatch;
 } HammerCompiledRule;
