@@ -225,7 +225,6 @@
 		D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerCharacterSetRuleTests.m; sourceTree = "<group>"; };
 		D4551ECC113F88700086F21C /* HammerConcatenationRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerConcatenationRuleTests.h; sourceTree = "<group>"; };
 		D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerConcatenationRuleTests.m; sourceTree = "<group>"; };
-		D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerContainerRuleTests.m; sourceTree = "<group>"; };
 		D4551ECF113F88700086F21C /* HammerLiteralConcatenationRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerLiteralConcatenationRuleTests.h; sourceTree = "<group>"; };
 		D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerLiteralConcatenationRuleTests.m; sourceTree = "<group>"; };
 		D4551ED1113F88700086F21C /* HammerLiteralRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerLiteralRuleTests.h; sourceTree = "<group>"; };
@@ -234,7 +233,6 @@
 		D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerLookaheadRuleTests.m; sourceTree = "<group>"; };
 		D4551ED5113F88700086F21C /* HammerNamedRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerNamedRuleTests.h; sourceTree = "<group>"; };
 		D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerNamedRuleTests.m; sourceTree = "<group>"; };
-		D4551ED7113F88700086F21C /* HammerParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerParserTests.m; sourceTree = "<group>"; };
 		D4551ED8113F88700086F21C /* HammerReferenceRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerReferenceRuleTests.h; sourceTree = "<group>"; };
 		D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerReferenceRuleTests.m; sourceTree = "<group>"; };
 		D4551EDA113F88700086F21C /* HammerRepetitionRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRepetitionRuleTests.h; sourceTree = "<group>"; };
@@ -242,8 +240,6 @@
 		D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRulePrinterTests.m; sourceTree = "<group>"; };
 		D4551EDD113F88700086F21C /* HammerRuleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerRuleTests.h; sourceTree = "<group>"; };
 		D4551EDE113F88700086F21C /* HammerRuleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerRuleTests.m; sourceTree = "<group>"; };
-		D4551EDF113F88700086F21C /* HammerTestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestParser.h; sourceTree = "<group>"; };
-		D4551EE0113F88700086F21C /* HammerTestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestParser.m; sourceTree = "<group>"; };
 		D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HammerTestRuleVisitor.h; sourceTree = "<group>"; };
 		D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HammerTestRuleVisitor.m; sourceTree = "<group>"; };
 		D4551EF7113F88A00086F21C /* Hammer.grammar */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hammer.grammar; path = "../Other Sources/Hammer.grammar"; sourceTree = "<group>"; };
@@ -437,7 +433,6 @@
 				D4551ECB113F88700086F21C /* HammerCharacterSetRuleTests.m */,
 				D4551ECC113F88700086F21C /* HammerConcatenationRuleTests.h */,
 				D4551ECD113F88700086F21C /* HammerConcatenationRuleTests.m */,
-				D4551ECE113F88700086F21C /* HammerContainerRuleTests.m */,
 				D4551ECF113F88700086F21C /* HammerLiteralConcatenationRuleTests.h */,
 				D4551ED0113F88700086F21C /* HammerLiteralConcatenationRuleTests.m */,
 				D4551ED1113F88700086F21C /* HammerLiteralRuleTests.h */,
@@ -446,7 +441,6 @@
 				D4551ED4113F88700086F21C /* HammerLookaheadRuleTests.m */,
 				D4551ED5113F88700086F21C /* HammerNamedRuleTests.h */,
 				D4551ED6113F88700086F21C /* HammerNamedRuleTests.m */,
-				D4551ED7113F88700086F21C /* HammerParserTests.m */,
 				D4551ED8113F88700086F21C /* HammerReferenceRuleTests.h */,
 				D4551ED9113F88700086F21C /* HammerReferenceRuleTests.m */,
 				D4551EDA113F88700086F21C /* HammerRepetitionRuleTests.h */,
@@ -454,8 +448,6 @@
 				D4551EDC113F88700086F21C /* HammerRulePrinterTests.m */,
 				D4551EDD113F88700086F21C /* HammerRuleTests.h */,
 				D4551EDE113F88700086F21C /* HammerRuleTests.m */,
-				D4551EDF113F88700086F21C /* HammerTestParser.h */,
-				D4551EE0113F88700086F21C /* HammerTestParser.m */,
 				D4551EE1113F88700086F21C /* HammerTestRuleVisitor.h */,
 				D4551EE2113F88700086F21C /* HammerTestRuleVisitor.m */,
 			);
