@@ -107,7 +107,7 @@
 	
 	NSError *error = nil;
 	if(![module verifyWithError: &error]) {
-		LLVMDumpModule([module moduleRef]);
+		// LLVMDumpModule([module moduleRef]);
 		NSLog(@"Error in module: %@", error.localizedDescription);
 		return nil;
 	}
@@ -120,11 +120,13 @@
 	[optimizer addInstructionCombiningPass];
 	[optimizer addPromoteMemoryToRegisterPass];
 	// [optimizer addGVNPass];
-	// [optimizer addCFGSimplificationPass];
+	[optimizer addCFGSimplificationPass];
 	
 	[optimizer optimizeModule: module];
+	
 	void (*initialize)() = [compiler compiledFunction: initializer];
 	initialize();
+	
 	HammerCompiledRuleRef compiledRule = HammerCompiledRuleCreate(rule, [compiler compiledFunction: builtFunctions.lengthOfMatch], [compiler compiledFunction: builtFunctions.rangeOfMatch]);
 	
 	return compiledRule;
@@ -211,12 +213,12 @@
 	return [module externalFunctionWithName: @"HammerSequenceGetLength" type: [ARXType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerSequenceRef"], nil]];
 }
 
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchFunctionForCharacterRule:(HammerCharacterRuleRef)rule {
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForCharacterRule:(HammerCharacterRuleRef)rule {
 	return [^(ARXFunctionBuilder *function) {
-		[[[function argumentNamed: @"initial"] isUnsignedLessThan: [self.sequenceGetLengthFunction
-			call: [[function pointerArgumentNamed: @"state"].structureValue elementNamed: @"sequence"]]]
+		[function return: [[[function argumentNamed: @"initial"] isUnsignedLessThan: [self.sequenceGetLengthFunction
+			call: [[function structureArgumentNamed: @"state"] elementNamed: @"sequence"]]]
 				select: [context constantUnsignedInteger: 1]
-				    or: [context constantUnsignedInteger: NSNotFound]];
+				    or: [context constantUnsignedInteger: NSNotFound]]];
 	} copy];
 }
 
