@@ -53,11 +53,11 @@
 			@"ruleGraph",
 			@"isIgnoringMatches",
 		nil]];
-		[module setType: [ARXType pointerTypeToType: parserStateType] forName: @"HammerParserState *"];
+		[module setType: [ARXType pointerTypeToType: parserStateType] forName: @"HammerParserState*"];
 		
 		ARXFunctionType *lengthOfMatch = [ARXType functionType: context.integerType,
 			[module typeNamed: @"HammerIndex"],
-			[module typeNamed: @"HammerParserState *"],
+			[module typeNamed: @"HammerParserState*"],
 		nil];
 		[lengthOfMatch declareArgumentNames: [NSArray arrayWithObjects: @"initial", @"state", nil]];
 		[module setType: lengthOfMatch forName: @"lengthOfMatch"];
@@ -65,7 +65,7 @@
 		ARXFunctionType *rangeOfMatch = [ARXType functionType: context.int1Type,
 			[ARXType pointerTypeToType: [module typeNamed: @"NSRange"]],
 			[module typeNamed: @"HammerIndex"],
-			[module typeNamed: @"HammerParserState *"],
+			[module typeNamed: @"HammerParserState*"],
 		nil];
 		[rangeOfMatch declareArgumentNames: [NSArray arrayWithObjects: @"outrange", @"initial", @"state", nil]];
 		[module setType: rangeOfMatch forName: @"rangeOfMatch"];
@@ -139,27 +139,7 @@
 
 
 -(ARXFunction *)lengthOfIgnorableCharactersFunction {
-	return [module externalFunctionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [ARXType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState *"], [module typeNamed: @"HammerIndex"], nil]];
-/*
-	return [module functionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [ARXType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState *"], [module typeNamed: @"HammerIndex"], nil] definition: ^(ARXFunctionBuilder *function) {
-		ARXPointerValue
-			*length = [function allocateVariableOfType: [module typeNamed: @"HammerIndex"] value: [context constantUnsignedInteger: NSNotFound]],
-			*ignorableRule = [function allocateVariableOfType: [module typeNamed: @"HammerRuleRef"] value: [[self ruleGraphGetRuleForNameFunction] call: ((ARXPointerValue *)[function argumentNamed: @"state"]).value elementNamed: @"ruleGraph"]];
-		
-	}];
-*/
-}
-
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule {
-	return [self performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:", (NSString *)HammerRuleGetShortTypeName(rule)]) withObject: rule];
-}
-
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrule:(ARXFunction *)subrule {
-	return [self performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:withVisitedSubrule:", (NSString *)HammerRuleGetShortTypeName(rule), subrule]) withObject: rule withObject: subrule];
-}
-
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrules:(NSArray *)subrules {
-	return [self performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:withVisitedSubrules:", (NSString *)HammerRuleGetShortTypeName(rule), subrules]) withObject: rule withObject: subrules];
+	return [module externalFunctionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [ARXType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState*"], [module typeNamed: @"HammerIndex"], nil]];
 }
 
 -(ARXModuleFunctionDefinitionBlock)rangeOfMatchSkippingIgnorableCharactersDefinitionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
@@ -203,9 +183,28 @@
 	} copy];
 }
 
--(ARXModuleFunctionDefinitionBlock)rangeOfMatchFunctionForAlternationRule:(HammerAlternationRuleRef)rule {
-	NSLog(@"type of a function: %s", @encode(HammerRuleLengthOfMatchMethod));
-	return nil;
+-(ARXFunction *)rulesShouldBuildMatchesFunction {
+	return [module externalFunctionWithName: @"HammerParserStateRulesShouldBuildMatches" type: [ARXType functionType: context.int1Type, [module typeNamed: @"HammerParserState*"], nil]];
+}
+
+-(ARXModuleFunctionDefinitionBlock)rangeOfMatchDefinitionForAlternationRule:(HammerAlternationRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
+	return [^(ARXFunctionBuilder *function) {
+		ARXStructureValue *innerState = (ARXStructureValue *)[function allocateVariableOfType: [module typeNamed: @"HammerParserState"]];
+		NSLog(@"%@", [function structureArgumentNamed: @"state"]);
+		NSLog(@"%@", [[function structureArgumentNamed: @"state"] type]);
+		innerState.elements = [function structureArgumentNamed: @"state"].elements;
+		NSLog(@"%@", innerState);
+		ARXPointerValue *result = [function allocateVariableOfType: context.int1Type value: [[self rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: lengthOfMatch] call: [function argumentNamed: @"outrange"], [function argumentNamed: @"initial"], innerState]];
+		
+		[[[result.value invert] and: [self.rulesShouldBuildMatchesFunction call: [function argumentNamed: @"state"]]] ifTrue: ^{
+			[[function structureArgumentNamed: @"state"] setElement:
+				[[[[innerState structureElementNamed: @"errorContext"] elementNamed: @"rule"] notEquals: [context constantNullOfType: [module typeNamed: @"HammerRuleRef"]]]
+				select: [innerState structureElementNamed: @"errorContext"]
+				    or: [context constantStructure: [function argumentNamed: @"initial"], rule, nil]]
+			forName: @"errorContext"];
+		}];
+		[function return: result.value];
+	} copy];
 }
 
 

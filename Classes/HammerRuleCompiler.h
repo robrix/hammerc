@@ -21,10 +21,6 @@
 
 -(NSString *)nameForRule:(HammerRuleRef)rule;
 
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule;
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrule:(ARXFunction *)subrule;
--(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrules:(NSArray *)subrules;
-
 -(ARXModuleFunctionDefinitionBlock)rangeOfMatchSkippingIgnorableCharactersDefinitionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch;
 
 -(HammerRuleRef)compileRule:(HammerRuleRef)rule;

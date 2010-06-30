@@ -33,33 +33,45 @@
 }
 
 
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule {
+	return [compiler performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:", (NSString *)HammerRuleGetShortTypeName(rule)]) withObject: rule];
+}
+
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrule:(ARXFunction *)subrule {
+	return [compiler performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:withVisitedSubrule:", (NSString *)HammerRuleGetShortTypeName(rule), subrule]) withObject: rule withObject: subrule];
+}
+
+-(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForRule:(HammerRuleRef)rule withVisitedSubrules:(NSArray *)subrules {
+	return [compiler performSelector: NSSelectorFromString([NSString stringWithFormat: @"lengthOfMatchDefinitionFor%@:withVisitedSubrules:", (NSString *)HammerRuleGetShortTypeName(rule), subrules]) withObject: rule withObject: subrules];
+}
+
+
+-(ARXModuleFunctionDefinitionBlock)rangeOfMatchDefinitionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
+	SEL selector = NSSelectorFromString([NSString stringWithFormat: @"rangeOfMatchDefinitionFor%@:withLengthOfMatchFunction:", (NSString *)HammerRuleGetShortTypeName(rule)]);
+	return [compiler respondsToSelector: selector]
+	?	(ARXModuleFunctionDefinitionBlock)[compiler performSelector: selector withObject: rule withObject: lengthOfMatch]
+	:	[compiler rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: lengthOfMatch];
+}
+
+
 -(id)leaveRule:(HammerRuleRef)rule {
-	SEL selector = NSSelectorFromString([NSString stringWithFormat: @"rangeOfMatchDefinitionFor%@:", (NSString *)HammerRuleGetShortTypeName(rule)]);
 	HammerBuiltRuleFunctions *functions = [[HammerBuiltRuleFunctions alloc] init];
-	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [compiler lengthOfMatchDefinitionForRule: rule]];
-	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [compiler respondsToSelector: selector]
-	?	[compiler performSelector: selector withObject: rule]
-	:	[compiler rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
+	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [self lengthOfMatchDefinitionForRule: rule]];
+	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [self rangeOfMatchDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
 	return functions;
 }
 
 -(id)leaveRule:(HammerRuleRef)rule withVisitedSubrule:(id)subrule {
-	SEL selector = NSSelectorFromString([NSString stringWithFormat: @"rangeOfMatchDefinitionFor%@:withVisitedSubrule:", (NSString *)HammerRuleGetShortTypeName(rule)]);
 	HammerBuiltRuleFunctions *functions = [[HammerBuiltRuleFunctions alloc] init];
-	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [compiler lengthOfMatchDefinitionForRule: rule withVisitedSubrule: subrule]];
-	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [compiler respondsToSelector: selector]
-	?	[compiler performSelector: selector withObject: rule withObject: subrule]
-	:	[compiler rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
+	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [self lengthOfMatchDefinitionForRule: rule withVisitedSubrule: subrule]];
+	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [self rangeOfMatchDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
 	return functions;
 }
 
 -(id)leaveRule:(HammerRuleRef)rule withVisitedSubrules:(NSArray *)subrules {
-	SEL selector = NSSelectorFromString([NSString stringWithFormat: @"rangeOfMatchDefinitionFor%@:withVisitedSubrules:", (NSString *)HammerRuleGetShortTypeName(rule)]);
 	HammerBuiltRuleFunctions *functions = [[HammerBuiltRuleFunctions alloc] init];
-	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [compiler lengthOfMatchDefinitionForRule: rule withVisitedSubrules: subrules]];
-	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [compiler respondsToSelector: selector]
-	?	[compiler performSelector: selector withObject: rule withObject: subrules]
-	:	[compiler rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
+	functions.lengthOfMatch = [self lengthOfMatchFunctionForRule: rule withDefinition: [self lengthOfMatchDefinitionForRule: rule withVisitedSubrules: subrules]];
+	functions.rangeOfMatch = [self rangeOfMatchFunctionForRule: rule withDefinition: [self rangeOfMatchDefinitionForRule: rule withLengthOfMatchFunction: functions.lengthOfMatch]];
 	return functions;
 }
 
