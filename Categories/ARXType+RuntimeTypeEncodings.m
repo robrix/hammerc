@@ -147,7 +147,9 @@ static NSString * const HammerCObjCTypeEncodingGrammar =
 }
 
 -(ARXType *)typeRuleDidMatchInRange:(NSRange)range withSubmatches:(NSDictionary *)submatches {
-	return [[submatches objectForKey: [submatches allKeys].lastObject] lastObject];
+	NSMutableDictionary *subs = [submatches mutableCopy];
+	[subs removeObjectForKey: @"typeQualifier"];
+	return [[subs objectForKey: [subs allKeys].lastObject] lastObject];
 }
 
 -(ARXType *)mainRuleDidMatchInRange:(NSRange)range withSubmatches:(NSDictionary *)submatches {

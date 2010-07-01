@@ -111,6 +111,13 @@
 			remoteGlobalIDString = D4041AB0113BB80D005F156E;
 			remoteInfo = "Hammer (Static Library)";
 		};
+		D488B64811DBA13B00B2B7E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D4CF603311C32F8000C9DD15;
+			remoteInfo = Tests;
+		};
 		D48B24E111B25721007CBBB4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D48B248A11B25720007CBBB4 /* Polymorph.xcodeproj */;
@@ -152,13 +159,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = D4D9DE5510EB5F4F003EEE90;
 			remoteInfo = AuspicionLLVM;
-		};
-		D4D74F0F11C37FFC002FF2F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D4D74F0511C37FFC002FF2F1 /* Auspicion.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D4CF603311C32F8000C9DD15;
-			remoteInfo = Tests;
 		};
 		D4D74F1111C38010002FF2F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -545,7 +545,7 @@
 			children = (
 				D4D74F0C11C37FFC002FF2F1 /* libAuspicion.a */,
 				D4D74F0E11C37FFC002FF2F1 /* libAuspicionLLVM.a */,
-				D4D74F1011C37FFC002FF2F1 /* Tests.octest */,
+				D488B64911DBA13B00B2B7E8 /* Tests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -669,6 +669,13 @@
 			remoteRef = D4551E80113F85780086F21C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D488B64911DBA13B00B2B7E8 /* Tests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Tests.octest;
+			remoteRef = D488B64811DBA13B00B2B7E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D48B24E211B25721007CBBB4 /* libPolymorph.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -709,13 +716,6 @@
 			fileType = archive.ar;
 			path = libAuspicionLLVM.a;
 			remoteRef = D4D74F0D11C37FFC002FF2F1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D4D74F1011C37FFC002FF2F1 /* Tests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = Tests.octest;
-			remoteRef = D4D74F0F11C37FFC002FF2F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

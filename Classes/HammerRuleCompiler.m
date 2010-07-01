@@ -44,6 +44,12 @@
 		ARXModuleImportType(module, HammerRuleRef);
 		ARXModuleImportType(module, HammerSequenceRef);
 		ARXModuleImportType(module, HammerMatchRef);
+		ARXStructureType *errorContextType = (ARXStructureType *)ARXModuleImportType(module, HammerErrorContext);
+		[errorContextType declareElementNames: [NSArray arrayWithObjects:
+			@"index",
+			@"rule",
+		nil]];
+		
 		ARXModuleImportType(module, NSString *);
 		ARXStructureType *parserStateType = (ARXStructureType *)ARXModuleImportType(module, HammerParserState);
 		[parserStateType declareElementNames: [NSArray arrayWithObjects:
@@ -106,6 +112,7 @@
 	}
 	
 	NSError *error = nil;
+	LLVMDumpModule([module moduleRef]);
 	if(![module verifyWithError: &error]) {
 		// LLVMDumpModule([module moduleRef]);
 		NSLog(@"Error in module: %@", error.localizedDescription);
@@ -142,6 +149,7 @@
 	return [module externalFunctionWithName: @"HammerRuleLengthOfIgnorableCharactersFromCursor" type: [ARXType functionType: [module typeNamed: @"HammerIndex"], [module typeNamed: @"HammerParserState*"], [module typeNamed: @"HammerIndex"], nil]];
 }
 
+
 -(ARXModuleFunctionDefinitionBlock)rangeOfMatchSkippingIgnorableCharactersDefinitionForRule:(HammerRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
 	return [^(ARXFunctionBuilder *function) {
 		ARXPointerValue
@@ -155,7 +163,7 @@
 			}];
 		}];
 		
-		[function structureArgumentNamed: @"outrange"].elements = [NSArray arrayWithObjects:
+		[function pointerArgumentNamed: @"outrange"].structureValue.elements = [NSArray arrayWithObjects:
 			[[function argumentNamed: @"initial"] plus: [[ignorable.value equals: [context constantUnsignedInteger: NSNotFound]] select: [context constantUnsignedInteger: 0] or: ignorable.value]],
 			length.value,
 		nil];
@@ -187,21 +195,27 @@
 	return [module externalFunctionWithName: @"HammerParserStateRulesShouldBuildMatches" type: [ARXType functionType: context.int1Type, [module typeNamed: @"HammerParserState*"], nil]];
 }
 
+-(ARXFunction *)rangeOfMatchSkippingIgnorableCharactersFunctionForAlternationRule:(HammerAlternationRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
+	return [module functionWithName: [NSString stringWithFormat: @"%@ rangeOfMatchSkippingIgnorableCharacters", [self nameForRule: rule]] type: [module typeNamed: @"rangeOfMatch"] definition: [self rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: lengthOfMatch]];
+}
+
 -(ARXModuleFunctionDefinitionBlock)rangeOfMatchDefinitionForAlternationRule:(HammerAlternationRuleRef)rule withLengthOfMatchFunction:(ARXFunction *)lengthOfMatch {
 	return [^(ARXFunctionBuilder *function) {
-		ARXStructureValue *innerState = (ARXStructureValue *)[function allocateVariableOfType: [module typeNamed: @"HammerParserState"]];
-		NSLog(@"%@", [function structureArgumentNamed: @"state"]);
-		NSLog(@"%@", [[function structureArgumentNamed: @"state"] type]);
-		innerState.elements = [function structureArgumentNamed: @"state"].elements;
-		NSLog(@"%@", innerState);
-		ARXPointerValue *result = [function allocateVariableOfType: context.int1Type value: [[self rangeOfMatchSkippingIgnorableCharactersDefinitionForRule: rule withLengthOfMatchFunction: lengthOfMatch] call: [function argumentNamed: @"outrange"], [function argumentNamed: @"initial"], innerState]];
+		ARXPointerValue *innerState = [function allocateVariableOfType: [module typeNamed: @"HammerParserState"]];
+		innerState.structureValue.elements = [function pointerArgumentNamed: @"state"].structureValue.elements;
+		ARXPointerValue *result = [function allocateVariableOfType: context.int1Type value: [[self rangeOfMatchSkippingIgnorableCharactersFunctionForAlternationRule: rule withLengthOfMatchFunction: lengthOfMatch] call: [function argumentNamed: @"outrange"], [function argumentNamed: @"initial"], innerState]];
 		
-		[[[result.value invert] and: [self.rulesShouldBuildMatchesFunction call: [function argumentNamed: @"state"]]] ifTrue: ^{
-			[[function structureArgumentNamed: @"state"] setElement:
-				[[[[innerState structureElementNamed: @"errorContext"] elementNamed: @"rule"] notEquals: [context constantNullOfType: [module typeNamed: @"HammerRuleRef"]]]
-				select: [innerState structureElementNamed: @"errorContext"]
-				    or: [context constantStructure: [function argumentNamed: @"initial"], rule, nil]]
-			forName: @"errorContext"];
+		ARXBooleanValue *needsErrorContext = [[result.value invert] and: [self.rulesShouldBuildMatchesFunction call: [function argumentNamed: @"state"]]];
+		NSLog(@"needsErrorContext: %@", needsErrorContext);
+		[needsErrorContext ifTrue: ^{
+			ARXStructureValue
+				*errorContext = [[function pointerArgumentNamed: @"state"].structureValue structureElementNamed: @"errorContext"],
+				*innerErrorContext = [innerState.structureValue structureElementNamed: @"errorContext"];
+			ARXBooleanValue *hasNestedError = [[[innerState.structureValue structureElementNamed: @"errorContext"] elementNamed: @"rule"] notEquals: [context constantNullOfType: [module typeNamed: @"HammerRuleRef"]]];
+			[errorContext setElement: [hasNestedError select: [innerErrorContext elementNamed: @"index"] or: [function argumentNamed: @"initial"]] forName: @"index"];
+			// fixme: constant pointers are only viable for JIT
+			// fixme: actually call the initializers from a function
+			[errorContext setElement: [hasNestedError select: [innerErrorContext elementNamed: @"rule"] or: [context constantPointer: rule ofType: [module typeNamed: @"HammerRuleRef"]]] forName: @"rule"];
 		}];
 		[function return: result.value];
 	} copy];
@@ -247,7 +261,7 @@
 
 -(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForCharacterSetRule:(HammerCharacterSetRuleRef)rule {
 	return [^(ARXFunctionBuilder *function) {
-		ARXValue *sequence = [[function structureArgumentNamed: @"state"] elementNamed: @"sequence"];
+		ARXValue *sequence = [[function pointerArgumentNamed: @"state"].structureValue elementNamed: @"sequence"];
 		[function return: [[[[function argumentNamed: @"initial"] isUnsignedLessThan: [self.sequenceGetLengthFunction call: sequence]]
 			and: [self.characterIsMemberFunction call: [module globalNamed: [self nameForRule: rule]], [self.getCharacterAtIndexFunction call: [self.sequenceGetStringFunction call: sequence], [function argumentNamed: @"initial"], nil], nil]
 		] select: [context constantUnsignedInteger: 1]
@@ -276,7 +290,7 @@
 
 -(ARXModuleFunctionDefinitionBlock)lengthOfMatchDefinitionForLiteralRule:(HammerLiteralRuleRef)rule {
 	return [^(ARXFunctionBuilder *function) {
-		ARXValue *sequence = [[function structureArgumentNamed: @"state"] elementNamed: @"sequence"];
+		ARXValue *sequence = [[function pointerArgumentNamed: @"state"].structureValue elementNamed: @"sequence"];
 		[function return: [[[self.sequenceContainsSequenceAtIndexFunction call: sequence, [module globalNamed: [self nameForRule: rule]], [function argumentNamed: @"initial"]] toBoolean]
 			select: [context constantUnsignedInteger: HammerSequenceGetLength(HammerLiteralRuleGetSequence(rule))]
 			   or: [context constantUnsignedInteger: NSNotFound]]];
